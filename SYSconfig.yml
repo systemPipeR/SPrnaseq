@@ -1,0 +1,115 @@
+###########################################
+##           Directory and WF            ##
+###########################################
+project: 
+  class: Directory
+  path: ./
+data:
+  class: Directory
+  path: ./data
+param:
+  class: Directory
+  path: ./param
+results:
+  class: Directory
+  path: ./results
+targets:
+  class: File
+  path: ./targets.txt
+Rmd:
+  class: File
+  path: ./systemPipeRNAseq.Rmd
+
+###########################################
+##           Common Parameters           ##
+###########################################
+
+fq1:
+  class: File
+  path: _FASTQ_PATH1_
+
+fq2:
+  class: File
+  path: _FASTQ_PATH2_
+
+SampleName: _SampleName_
+
+results_path:
+  class: Directory
+  path: ./results
+
+thread: 4
+
+ModulesToLoad: 
+  module1: STAR/2.5.3a
+  module2: samtools/1.9
+  module3: bowtie2/2.3.4.1
+  module4: bwa/0.7.17
+  module5: fastx_toolkit/0.0.13 
+  module6: hisat2/2.1.0
+  module7: samtools/1.9
+  module8: tophat/2.1.1
+  module9: trim_galore/0.4.2
+  module10: trimmomatic/0.36
+  module11: trinity-rnaseq/2.8.4
+
+###########################################
+##           INDEX parameters           ##
+###########################################
+
+idx_basedir:
+  class: Directory
+  path: ./data/
+
+idx_basename: tair10.fasta
+
+###########################################
+##         trim_galore parameters        ##
+###########################################
+
+length: 25
+
+quality: 20
+
+adapter_trim_galore: AGATCGGAAGAGC 
+
+###########################################
+##         trimmomatic parameters        ##
+###########################################
+
+leading: "LEADING:3"
+
+trailing: "TRAILING:3"
+
+slidingwindow: "SLIDINGWINDOW:4:5"
+
+minlen: "MINLEN:35"
+
+phred: 33
+
+###########################################
+##         samtools parameters           ##
+###########################################
+
+samtools_sam:
+  class: File
+  path: _SAM_PATH_
+
+samtools_bam:
+  class: File
+  path: _BAM_PATH_
+
+samtools_sort_bam:
+  class: File
+  path: _BAM_SORT_PATH_
+
+###########################################
+##       fastx_toolkit parameters        ##
+###########################################
+
+gunzip:
+  class: File
+  path: _FASTQ_PATH1_
+
+adaptor_fastx_toolkit: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+
