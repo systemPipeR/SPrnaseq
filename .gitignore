@@ -1,9 +1,0 @@
-# the following folder will not be tracked.
-
-
-# following files will be ignored.
-.Rhistory
-.swp
-.Rproj.user
-logs.sh
-
