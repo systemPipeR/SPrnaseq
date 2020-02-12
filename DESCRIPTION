@@ -1,0 +1,17 @@
+Package: SYSPipeRNAseq
+Title: RNA-Seq Workflow
+Version: 0.9.0
+Date: 2020-01-10
+Authors@R: c(
+    person(given = "Daniela", family = "Cassol", role = c("aut", "cre"), email="danielac@ucr.edu"), 
+    person(given = "Thomas", family = "Girke", role = c("aut")))
+Description: This package provides a pre-configured workflow and reporting template for RNA-seq analysis.
+biocViews: Genetics, Infrastructure, DataImport, Sequencing, RNASeq, GeneExpression, Coverage, GeneSetEnrichment, Alignment, QualityControl
+Imports: systemPipeR (>= 1.21.0), systemPipeRdata (>= 1.15.0)
+Suggests: BiocStyle, knitr, rmarkdown
+VignetteBuilder: knitr
+SystemRequirements: SYSPipeRNAseq can be used to run external 
+        command-line software (e.g. short read aligners), but the 
+        corresponding tool needs to be installed on a system.  
+License: Artistic-2.0
+URL: http://girke.bioinformatics.ucr.edu/systemPipeR/, https://github.com/tgirke/systemPipeR

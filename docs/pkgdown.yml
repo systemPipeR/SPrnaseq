@@ -1,0 +1,9 @@
+pandoc: 2.3.1
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  systemPipeRNAseq: systemPipeRNAseq.html
+urls:
+  reference: http://girke.bioinformatics.ucr.edu/systemPipeR//reference
+  article: http://girke.bioinformatics.ucr.edu/systemPipeR//articles
+
