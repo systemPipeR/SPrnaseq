@@ -15,9 +15,6 @@ home:
     href: https://support.bioconductor.org/
   - text: Report a bug
     href: https://github.com/tgirke/systemPipeR/issues
-  devstatus:
-  - text: systemPipeR
-    href: http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html
 
 template:
   params:
