@@ -31,15 +31,14 @@ To install the package, please use the _`BiocManager::install`_ command:
 ```
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
-BiocManager::install("systemPipeR")
+BiocManager::install("systemPipeR/SYSPipeRNAseq", dependencies=TRUE)
 ```
-
-To obtain the most recent updates immediately, one can install it directly from
-github as follow:
+To obtain the *systemPipeR* and *systemPipeRdata*, please run as follow:
 ```
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
-BiocManager::install("tgirke/systemPipeR", build_vignettes=TRUE, dependencies=TRUE)
+BiocManager::install("systemPipeR")
+BiocManager::install("systemPipeRdata")
 ```
 
 #### Usage
