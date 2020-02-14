@@ -1,4 +1,4 @@
-name: Template Name
+name: systemPipeRNAseq
 description: >
    A description of the template
-create_dir: FALSE
+create_dir: TRUE
