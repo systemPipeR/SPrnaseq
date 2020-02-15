@@ -37,7 +37,7 @@ navbar:
     articles:
       text: Workflow
       icon: fas fa-book
-      href: articles/systemPipeRNAseq.html
+      href: articles/systemPipeChIPseq.html
     reference:
     - title: "systemPipeR"
       desc: >
