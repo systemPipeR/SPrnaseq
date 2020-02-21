@@ -1,4 +1,4 @@
-Package: SYSPipeRNAseq
+Package: systemPipeRNAseq
 Title: RNA-Seq Workflow
 Version: 0.9.0
 Date: 2020-01-10
@@ -10,8 +10,8 @@ biocViews: Genetics, Infrastructure, DataImport, Sequencing, RNASeq, GeneExpress
 Imports: systemPipeR (>= 1.21.0), systemPipeRdata (>= 1.15.0)
 Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
-SystemRequirements: SYSPipeRNAseq can be used to run external 
+SystemRequirements: systemPipeRNAseq can be used to run external 
         command-line software (e.g. short read aligners), but the 
         corresponding tool needs to be installed on a system.  
 License: Artistic-2.0
-URL: http://girke.bioinformatics.ucr.edu/systemPipeR/, https://github.com/systemPipeR/SYSPipeRNAseq
+URL: http://girke.bioinformatics.ucr.edu/systemPipeR/, https://github.com/systemPipeR/systemPipeRNAseq

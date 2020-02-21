@@ -1,4 +1,4 @@
-title: SYSPipeRNAseq
+title: systemPipeRNAseq
 url: http://girke.bioinformatics.ucr.edu/systemPipeR/
 
 authors:
@@ -37,7 +37,7 @@ navbar:
     articles:
       text: Workflow
       icon: fas fa-book
-      href: articles/systemPipeChIPseq.html
+      href: articles/systemPipeRNAseq.html
     reference:
     - title: "systemPipeR"
       desc: >
