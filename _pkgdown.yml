@@ -22,7 +22,7 @@ template:
 #      api_key: 
 #      index_name: 
        bootswatch: flatly
-#    ganalytics: UA-
+    ganalytics: UA-158796879-1
 
 navbar:
   structure:
