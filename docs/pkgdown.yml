@@ -3,7 +3,7 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   systemPipeRNAseq: systemPipeRNAseq.html
-last_built: 2020-04-18T19:17Z
+last_built: 2020-04-18T19:48Z
 urls:
   reference: http://girke.bioinformatics.ucr.edu/systemPipeR//reference
   article: http://girke.bioinformatics.ucr.edu/systemPipeR//articles

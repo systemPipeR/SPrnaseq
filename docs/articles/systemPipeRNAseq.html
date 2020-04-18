@@ -221,49 +221,13 @@ Figure 1: FASTQ quality report for 18 samples
 <div id="alignments" class="section level1">
 <h1 class="hasAnchor">
 <a href="#alignments" class="anchor"></a>Alignments</h1>
-<div id="read-mapping-with-bowtie2tophat2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#read-mapping-with-bowtie2tophat2" class="anchor"></a>Read mapping with <code>Bowtie2/Tophat2</code>
-</h2>
-<p>The NGS reads of this project will be aligned against the reference genome sequence using <code>Bowtie2/TopHat2</code> <span class="citation">(Kim et al. 2013; Langmead and Salzberg 2012)</span> in both interactive job submissions and batch submissions to queuing systems of clusters using the <em><code>systemPipeR's</code></em> new CWL command-line interface.</p>
-<p>Build <em><code>Bowtie2</code></em> index.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/bowtie2/bowtie2-idx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
-<span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"bowtie2-index.cwl"</span>,
-    <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"bowtie2-index.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
-<span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">idx</span>)
-<span class="no">idx</span>
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(<span class="no">idx</span>)
-
-<span class="co">## Run in single machine</span>
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">idx</span>, <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
-<p>The parameter settings of the aligner are defined in the <code>tophat2-mapping-pe.cwl</code> and <code>tophat2-mapping-pe.yml</code> files. The following shows how to construct the corresponding <em>SYSargs2</em> object, here <em>args</em>.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/tophat2/tophat2-se"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
-<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="no">targetspath</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"tophat2-mapping-se.cwl"</span>,
-    <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"tophat2-mapping-se.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
-<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">args</span>, <span class="kw">inputvars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">FileName</span> <span class="kw">=</span> <span class="st">"_FASTQ_PATH1_"</span>,
-    <span class="kw">SampleName</span> <span class="kw">=</span> <span class="st">"_SampleName_"</span>))
-<span class="no">args</span>
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(<span class="no">args</span>)[<span class="fl">1</span>:<span class="fl">2</span>]
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(<span class="no">args</span>)[<span class="fl">1</span>:<span class="fl">2</span>]
-<span class="co">## Run in single machine</span>
-<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">args</span>, <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
-<p>Submission of alignment jobs to compute cluster, here using 72 CPU cores (18 <code>qsub</code> processes each with 4 CPU cores).</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co">## Run on the cluster</span>
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/moduleload.html">moduleload</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs.html">modules</a></span>(<span class="no">args</span>))
-<span class="no">resources</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">walltime</span> <span class="kw">=</span> <span class="fl">120</span>, <span class="kw">ntasks</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">ncpus</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">memory</span> <span class="kw">=</span> <span class="fl">1024</span>)
-<span class="no">reg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/clusterRun.html">clusterRun</a></span>(<span class="no">args</span>, <span class="kw">FUN</span> <span class="kw">=</span> <span class="no">runCommandline</span>, <span class="kw">more.args</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>,
-    <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>), <span class="kw">conffile</span> <span class="kw">=</span> <span class="st">".batchtools.conf.R"</span>,
-    <span class="kw">template</span> <span class="kw">=</span> <span class="st">"batchtools.slurm.tmpl"</span>, <span class="kw">Njobs</span> <span class="kw">=</span> <span class="fl">18</span>, <span class="kw">runid</span> <span class="kw">=</span> <span class="st">"01"</span>,
-    <span class="kw">resourceList</span> <span class="kw">=</span> <span class="no">resources</span>)
-<span class="fu">waitForJobs</span>(<span class="kw">reg</span> <span class="kw">=</span> <span class="no">reg</span>)</pre></body></html></div>
-</div>
 <div id="read-mapping-with-hisat2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-mapping-with-hisat2" class="anchor"></a>Read mapping with <code>HISAT2</code>
 </h2>
 <p>The following steps will demonstrate how to use the short read aligner <code>Hisat2</code> <span class="citation">(Kim, Langmead, and Salzberg 2015)</span> in both interactive job submissions and batch submissions to queuing systems of clusters using the <em><code>systemPipeR's</code></em> new CWL command-line interface.</p>
 <p>Build <code>Hisat2</code> index.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-idx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-idx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
 <span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"hisat2-index.cwl"</span>,
     <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"hisat2-index.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
 <span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">idx</span>)
@@ -273,7 +237,7 @@ Figure 1: FASTQ quality report for 18 samples
 <span class="co">## Run</span>
 <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">idx</span>, <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p>The parameter settings of the aligner are defined in the <code>hisat2-mapping-se.cwl</code> and <code>hisat2-mapping-se.yml</code> files. The following shows how to construct the corresponding <em>SYSargs2</em> object, here <em>args</em>.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-se"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-se"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
 <span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="no">targetspath</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"hisat2-mapping-se.cwl"</span>,
     <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"hisat2-mapping-se.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
 <span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">args</span>, <span class="kw">inputvars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">FileName</span> <span class="kw">=</span> <span class="st">"_FASTQ_PATH1_"</span>,
@@ -284,7 +248,7 @@ Figure 1: FASTQ quality report for 18 samples
 
 <span class="co">## Runc single Machine</span>
 <span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">args</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">batchtools</span>)
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">batchtools</span>)
 <span class="no">resources</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">walltime</span> <span class="kw">=</span> <span class="fl">120</span>, <span class="kw">ntasks</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">ncpus</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">memory</span> <span class="kw">=</span> <span class="fl">1024</span>)
 <span class="no">reg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/clusterRun.html">clusterRun</a></span>(<span class="no">args</span>, <span class="kw">FUN</span> <span class="kw">=</span> <span class="no">runCommandline</span>, <span class="kw">more.args</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>,
     <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>), <span class="kw">conffile</span> <span class="kw">=</span> <span class="st">".batchtools.conf.R"</span>,
@@ -296,18 +260,18 @@ Figure 1: FASTQ quality report for 18 samples
     <span class="st">".bam"</span>))  <span class="co">## Updates the output(args) to the right location in the subfolders</span>
 <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(<span class="no">args</span>)</pre></body></html></div>
 <p>Check whether all BAM files have been created.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">outpaths</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(<span class="no">args</span>, <span class="kw">slot</span> <span class="kw">=</span> <span class="st">"output"</span>, <span class="kw">subset</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">1</span>)
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">outpaths</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(<span class="no">args</span>, <span class="kw">slot</span> <span class="kw">=</span> <span class="st">"output"</span>, <span class="kw">subset</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">1</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="no">outpaths</span>)</pre></body></html></div>
 </div>
 <div id="read-and-alignment-stats" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-and-alignment-stats" class="anchor"></a>Read and alignment stats</h2>
 <p>The following provides an overview of the number of reads in each sample and how many of them aligned to the reference.</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">read_statsDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/alignStats.html">alignStats</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>)
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">read_statsDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/alignStats.html">alignStats</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">read_statsDF</span>, <span class="st">"results/alignStats.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
     <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)</pre></body></html></div>
 <p>The following shows the alignment statistics for a sample file provided by the <code>systemPipeR</code> package.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"alignStats.xls"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>),
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"alignStats.xls"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>),
     <span class="kw">header</span> <span class="kw">=</span> <span class="fl">TRUE</span>)[<span class="fl">1</span>:<span class="fl">4</span>, ]</pre></body></html></div>
 <pre><code>##   FileName Nreads2x Nalign Perc_Aligned Nalign_Primary
 ## 1      M1A   192918 177961     92.24697         177961
@@ -324,7 +288,7 @@ Figure 1: FASTQ quality report for 18 samples
 <h2 class="hasAnchor">
 <a href="#create-symbolic-links-for-viewing-bam-files-in-igv" class="anchor"></a>Create symbolic links for viewing BAM files in IGV</h2>
 <p>The <code>symLink2bam</code> function creates symbolic links to view the BAM alignment files in a genome browser such as IGV. The corresponding URLs are written to a file with a path specified under <code>urlfile</code> in the <code>results</code> directory.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/symLink2bam.html">symLink2bam</a></span>(<span class="kw">sysargs</span> <span class="kw">=</span> <span class="no">args</span>, <span class="kw">htmldir</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"~/.html/"</span>, <span class="st">"somedir/"</span>),
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/symLink2bam.html">symLink2bam</a></span>(<span class="kw">sysargs</span> <span class="kw">=</span> <span class="no">args</span>, <span class="kw">htmldir</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"~/.html/"</span>, <span class="st">"somedir/"</span>),
     <span class="kw">urlbase</span> <span class="kw">=</span> <span class="st">"http://biocluster.ucr.edu/~tgirke/"</span>, <span class="kw">urlfile</span> <span class="kw">=</span> <span class="st">"./results/IGVurl.txt"</span>)</pre></body></html></div>
 </div>
 </div>
@@ -335,7 +299,7 @@ Figure 1: FASTQ quality report for 18 samples
 <h2 class="hasAnchor">
 <a href="#read-counting-with-summarizeoverlaps-in-parallel-mode-using-multiple-cores" class="anchor"></a>Read counting with <code>summarizeOverlaps</code> in parallel mode using multiple cores</h2>
 <p>Reads overlapping with annotation ranges of interest are counted for each sample using the <code>summarizeOverlaps</code> function <span class="citation">(Lawrence et al. 2013)</span>. The read counting is preformed for exonic gene regions in a non-strand-specific manner while ignoring overlaps among different genes. Subsequently, the expression count values are normalized by <em>reads per kp per million mapped reads</em> (RPKM). The raw read count table (<code>countDFeByg.xls</code>) and the corresponding RPKM table (<code>rpkmDFeByg.xls</code>) are written to separate files in the directory of this project. Parallelization is achieved with the <code>BiocParallel</code> package, here using 8 CPU cores.</p>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GenomicFeatures"</span>)
+<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GenomicFeatures"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">BiocParallel</span>)
 <span class="no">txdb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicFeatures/man/makeTxDbFromGFF.html">makeTxDbFromGFF</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"data/tair10.gff"</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"gff"</span>,
     <span class="kw">dataSource</span> <span class="kw">=</span> <span class="st">"TAIR"</span>, <span class="kw">organism</span> <span class="kw">=</span> <span class="st">"Arabidopsis thaliana"</span>)
@@ -361,10 +325,10 @@ Figure 1: FASTQ quality report for 18 samples
 <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">rpkmDFeByg</span>, <span class="st">"results/rpkmDFeByg.xls"</span>, <span class="kw">col.names</span> <span class="kw">=</span> <span class="fl">NA</span>,
     <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)</pre></body></html></div>
 <p>Sample of data slice of count table</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
     <span class="fl">1</span>:<span class="fl">5</span>]</pre></body></html></div>
 <p>Sample of data slice of RPKM table</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/rpkmDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
+<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/rpkmDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
     <span class="fl">1</span>:<span class="fl">4</span>]</pre></body></html></div>
 <p>Note, for most statistical differential expression or abundance analysis methods, such as <code>edgeR</code> or <code>DESeq2</code>, the raw count values should be used as input. The usage of RPKM values should be restricted to specialty applications required by some users, <em>e.g.</em> manually comparing the expression levels among different genes or features.</p>
 </div>
@@ -372,7 +336,7 @@ Figure 1: FASTQ quality report for 18 samples
 <h2 class="hasAnchor">
 <a href="#sample-wise-correlation-analysis" class="anchor"></a>Sample-wise correlation analysis</h2>
 <p>The following computes the sample-wise Spearman correlation coefficients from the <code>rlog</code> transformed expression values generated with the <code>DESeq2</code> package. After transformation to a distance matrix, hierarchical clustering is performed with the <code>hclust</code> function and the result is plotted as a dendrogram (also see file <code>sample_tree.pdf</code>).</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DESeq2</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DESeq2</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ape</span>, <span class="kw">warn.conflicts</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 <span class="no">countDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="st">"./results/countDFeByg.xls"</span>))
 <span class="no">colData</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">row.names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/targets.as.df.html">targets.as.df</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">targets</a></span>(<span class="no">args</span>))$<span class="no">SampleName</span>,
@@ -399,7 +363,7 @@ Figure 2: Correlation dendrogram of samples
 <h2 class="hasAnchor">
 <a href="#run-edger" class="anchor"></a>Run <code>edgeR</code>
 </h2>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">edgeR</span>)
+<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">edgeR</span>)
 <span class="no">countDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>,
     <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 <span class="no">targets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"targets.txt"</span>, <span class="kw">comment</span> <span class="kw">=</span> <span class="st">"#"</span>)
@@ -407,7 +371,7 @@ Figure 2: Correlation dendrogram of samples
 <span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/run_edgeR.html">run_edgeR</a></span>(<span class="kw">countDF</span> <span class="kw">=</span> <span class="no">countDF</span>, <span class="kw">targets</span> <span class="kw">=</span> <span class="no">targets</span>, <span class="kw">cmp</span> <span class="kw">=</span> <span class="no">cmp</span><span class="kw">[[</span><span class="fl">1</span>]],
     <span class="kw">independent</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">mdsplot</span> <span class="kw">=</span> <span class="st">""</span>)</pre></body></html></div>
 <p>Add gene descriptions</p>
-<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
 <span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">dataset</span> <span class="kw">=</span> <span class="st">"athaliana_eg_gene"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
 <span class="no">desc</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="kw">attributes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"tair_locus"</span>, <span class="st">"description"</span>), <span class="kw">mart</span> <span class="kw">=</span> <span class="no">m</span>)
 <span class="no">desc</span> <span class="kw">&lt;-</span> <span class="no">desc</span>[!<span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(<span class="no">desc</span>[, <span class="fl">1</span>]), ]
@@ -422,7 +386,7 @@ Figure 2: Correlation dendrogram of samples
 <h2 class="hasAnchor">
 <a href="#plot-deg-results" class="anchor"></a>Plot DEG results</h2>
 <p>Filter and plot DEG results for up and down regulated genes. The definition of <em>up</em> and <em>down</em> is given in the corresponding help file. To open it, type <code><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">?filterDEGs</a></code> in the R console.</p>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/edgeRglm_allcomp.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>,
+<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/edgeRglm_allcomp.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>,
     <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/DEGcounts.pdf"</span>)
 <span class="no">DEG_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="kw">degDF</span> <span class="kw">=</span> <span class="no">edgeDF</span>, <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Fold</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">FDR</span> <span class="kw">=</span> <span class="fl">20</span>))
@@ -438,7 +402,7 @@ Figure 3: Up and down regulated DEGs with FDR of 1%
 <h2 class="hasAnchor">
 <a href="#venn-diagrams-of-deg-sets" class="anchor"></a>Venn diagrams of DEG sets</h2>
 <p>The <code>overLapper</code> function can compute Venn intersects for large numbers of sample sets (up to 20 or more) and plots 2-5 way Venn diagrams. A useful feature is the possibility to combine the counts from several Venn comparisons with the same number of sample sets in a single Venn diagram (here for 4 up and down DEG sets).</p>
-<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">vennsetup</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(<span class="no">DEG_list</span>$<span class="no">Up</span>[<span class="fl">6</span>:<span class="fl">9</span>], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"vennsets"</span>)
+<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">vennsetup</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(<span class="no">DEG_list</span>$<span class="no">Up</span>[<span class="fl">6</span>:<span class="fl">9</span>], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"vennsets"</span>)
 <span class="no">vennsetdown</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(<span class="no">DEG_list</span>$<span class="no">Down</span>[<span class="fl">6</span>:<span class="fl">9</span>], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"vennsets"</span>)
 <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/vennplot.pdf"</span>)
 <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/vennPlot.html">vennPlot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">vennsetup</span>, <span class="no">vennsetdown</span>), <span class="kw">mymain</span> <span class="kw">=</span> <span class="st">""</span>, <span class="kw">mysub</span> <span class="kw">=</span> <span class="st">""</span>,
@@ -457,7 +421,7 @@ Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 <h2 class="hasAnchor">
 <a href="#obtain-gene-to-go-mappings" class="anchor"></a>Obtain gene-to-GO mappings</h2>
 <p>The following shows how to obtain gene-to-GO mappings from <code>biomaRt</code> (here for <em>A. thaliana</em>) and how to organize them for the downstream GO term enrichment analysis. Alternatively, the gene-to-GO mappings can be obtained for many organisms from Bioconductor’s <code>*.db</code> genome annotation packages or GO annotation files provided by various genome databases. For each annotation this relatively slow preprocessing step needs to be performed only once. Subsequently, the preprocessed data can be loaded with the <code>load</code> function as shown in the next subsection.</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
 <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>()  <span class="co"># To choose BioMart database</span>
 <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>(<span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
 <span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
@@ -483,7 +447,7 @@ Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 <h2 class="hasAnchor">
 <a href="#batch-go-term-enrichment-analysis" class="anchor"></a>Batch GO term enrichment analysis</h2>
 <p>Apply the enrichment analysis to the DEG sets obtained the above differential expression analysis. Note, in the following example the <code>FDR</code> filter is set here to an unreasonably high value, simply because of the small size of the toy data set used in this vignette. Batch enrichment analysis of many gene sets is performed with the function. When <code>method=all</code>, it returns all GO terms passing the p-value cutoff specified under the <code>cutoff</code> arguments. When <code>method=slim</code>, it returns only the GO terms specified under the <code>myslimv</code> argument. The given example shows how a GO slim vector for a specific organism can be obtained from BioMart.</p>
-<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="st">"data/GO/catdb.RData"</span>)
 <span class="no">DEG_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="kw">degDF</span> <span class="kw">=</span> <span class="no">edgeDF</span>, <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Fold</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">FDR</span> <span class="kw">=</span> <span class="fl">50</span>),
     <span class="kw">plot</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
@@ -510,7 +474,7 @@ Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 <h2 class="hasAnchor">
 <a href="#plot-batch-go-term-results" class="anchor"></a>Plot batch GO term results</h2>
 <p>The <code>data.frame</code> generated by <code>GOCluster</code> can be plotted with the <code>goBarplot</code> function. Because of the variable size of the sample sets, it may not always be desirable to show the results from different DEG sets in the same bar plot. Plotting single sample sets is achieved by subsetting the input data frame as shown in the first line of the following example.</p>
-<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="no">gos</span> <span class="kw">&lt;-</span> <span class="no">BatchResultslim</span>[<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"M6-V6_up_down"</span>, <span class="no">BatchResultslim</span>$<span class="no">CLID</span>),
+<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">gos</span> <span class="kw">&lt;-</span> <span class="no">BatchResultslim</span>[<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"M6-V6_up_down"</span>, <span class="no">BatchResultslim</span>$<span class="no">CLID</span>),
     ]
 <span class="no">gos</span> <span class="kw">&lt;-</span> <span class="no">BatchResultslim</span>
 <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"GOslimbarplotMF.pdf"</span>, <span class="kw">height</span> <span class="kw">=</span> <span class="fl">8</span>, <span class="kw">width</span> <span class="kw">=</span> <span class="fl">10</span>)
@@ -528,7 +492,7 @@ Figure 5: GO Slim Barplot for MF Ontology
 <h1 class="hasAnchor">
 <a href="#clustering-and-heat-maps" class="anchor"></a>Clustering and heat maps</h1>
 <p>The following example performs hierarchical clustering on the <code>rlog</code> transformed expression matrix subsetted by the DEGs identified in the above differential expression analysis. It uses a Pearson correlation-based distance measure and complete linkage for cluster joining.</p>
-<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pheatmap</span>)
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pheatmap</span>)
 <span class="no">geneids</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span>(<span class="no">DEG_list</span><span class="kw">[[</span><span class="fl">1</span>]])))
 <span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu">assay</span>(<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span>(<span class="no">dds</span>))[<span class="no">geneids</span>, ]
 <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"heatmap1.pdf"</span>)
@@ -543,7 +507,7 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 <div id="version-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#version-information" class="anchor"></a>Version Information</h1>
-<div class="sourceCode" id="cb31"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
 <pre><code>## R Under development (unstable) (2020-03-31 r78116)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 20.04 LTS
@@ -647,12 +611,6 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 </div>
 <div id="ref-Kim2015-ve">
 <p>Kim, Daehwan, Ben Langmead, and Steven L Salzberg. 2015. “HISAT: A Fast Spliced Aligner with Low Memory Requirements.” <em>Nat. Methods</em> 12 (4): 357–60.</p>
-</div>
-<div id="ref-Kim2013-vg">
-<p>Kim, Daehwan, Geo Pertea, Cole Trapnell, Harold Pimentel, Ryan Kelley, and Steven L Salzberg. 2013. “TopHat2: Accurate Alignment of Transcriptomes in the Presence of Insertions, Deletions and Gene Fusions.” <em>Genome Biol.</em> 14 (4): R36. <a href="https://doi.org/10.1186/gb-2013-14-4-r36">https://doi.org/10.1186/gb-2013-14-4-r36</a>.</p>
-</div>
-<div id="ref-Langmead2012-bs">
-<p>Langmead, Ben, and Steven L Salzberg. 2012. “Fast Gapped-Read Alignment with Bowtie 2.” <em>Nat. Methods</em> 9 (4): 357–59. <a href="https://doi.org/10.1038/nmeth.1923">https://doi.org/10.1038/nmeth.1923</a>.</p>
 </div>
 <div id="ref-Lawrence2013-kt">
 <p>Lawrence, Michael, Wolfgang Huber, Hervé Pagès, Patrick Aboyoun, Marc Carlson, Robert Gentleman, Martin T Morgan, and Vincent J Carey. 2013. “Software for Computing and Annotating Genomic Ranges.” <em>PLoS Comput. Biol.</em> 9 (8): e1003118. <a href="https://doi.org/10.1371/journal.pcbi.1003118">https://doi.org/10.1371/journal.pcbi.1003118</a>.</p>
