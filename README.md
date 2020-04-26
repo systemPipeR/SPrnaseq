@@ -71,3 +71,6 @@ The corresponding PDFs of these report templates are linked here:
 [systemPipeChIPseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeChIPseq.html)
 and
 [systemPipeVARseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeVARseq.html).
+
+
+![R-CMD-check](https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master)
