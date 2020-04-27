@@ -1,5 +1,9 @@
 ## This is a test
 ## Template from here: https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow
+##           - {os: windows-latest, r: '4.0'}
+##          - {os: macOS-latest, r: '4.0'}
+##          - {os: ubuntu-16.04, r: '4.0', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
+
 on:
   push:
     branches:
@@ -20,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: ubuntu-16.04, r: '4.0', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
+          - {os: ubuntu-18.04, r: '4.0', rspm: "https://demo.rstudiopm.com/all/__linux__/bionic/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
