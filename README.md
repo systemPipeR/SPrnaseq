@@ -17,7 +17,6 @@
 |:----------------:|:----------------:|:----------------:|
 | GitHub Actions | Multiple | ![R-CMD-check](https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master) | 
 | Travis CI | Linux | `NA` | 
-
 | Bioc ([_devel_](http://bioconductor.org/packages/devel/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-devel Build Status](http://bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR) | 
 | Bioc ([_release_](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/systemPipeR) | 
 
