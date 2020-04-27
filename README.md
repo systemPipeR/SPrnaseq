@@ -11,6 +11,16 @@
 [![dependencies](http://www.bioconductor.org/shields/dependencies/devel/systemPipeR.svg)](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html#since)
 <!-- badges: end -->
 
+## Software status
+
+| Platforms |  OS  | R CMD check |  
+|:----------------:|:----------------:|:----------------:|
+| GitHub Actions | Multiple | ![R-CMD-check](https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master) | 
+| Travis CI | Linux | `NA` | 
+
+| Bioc ([_devel_](http://bioconductor.org/packages/devel/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-devel Build Status](http://bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR) | 
+| Bioc ([_release_](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/systemPipeR) | 
+
 ### Introduction
 
 [_systemPipeR_](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html)
@@ -72,5 +82,3 @@ The corresponding PDFs of these report templates are linked here:
 and
 [systemPipeVARseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeVARseq.html).
 
-
-![R-CMD-check](https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master)
