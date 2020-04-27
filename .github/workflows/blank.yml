@@ -59,12 +59,15 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
+          install.packages(c("BiocManager", "ape", "knitcitations"))
+          BiocManager::install("systemPipeR")
+          BiocManager::install("systemPipeRdata")
 
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          install.packages(c("BiocManager", "ape"))
+          install.packages(c("BiocManager", "ape", "knitcitations"))
           BiocManager::install("systemPipeR")
           BiocManager::install("systemPipeRdata")
         shell: Rscript {0}
