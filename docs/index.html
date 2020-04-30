@@ -90,7 +90,39 @@
 </h1></div>
 <!-- badges: start -->
 
-<div id="introduction" class="section level3">
+<div id="software-status" class="section level2">
+<h2 class="hasAnchor">
+<a href="#software-status" class="anchor"></a>Software status</h2>
+<table class="table">
+<thead><tr class="header">
+<th align="center">Platforms</th>
+<th align="center">OS</th>
+<th align="center">R CMD check</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">GitHub Actions</td>
+<td align="center">Multiple</td>
+<td align="center"><img src="https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master" alt="R-CMD-check"></td>
+</tr>
+<tr class="even">
+<td align="center">Travis CI</td>
+<td align="center">Linux</td>
+<td align="center"><code>NA</code></td>
+</tr>
+<tr class="odd">
+<td align="center">Bioc (<a href="http://bioconductor.org/packages/devel/bioc/html/systemPipeR.html"><em>devel</em></a>)</td>
+<td align="center">Multiple</td>
+<td align="center"><a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR"><img src="http://bioconductor.org/shields/build/devel/bioc/systemPipeR.svg" alt="Bioconductor-devel Build Status"></a></td>
+</tr>
+<tr class="even">
+<td align="center">Bioc (<a href="http://bioconductor.org/packages/release/bioc/html/systemPipeR.html"><em>release</em></a>)</td>
+<td align="center">Multiple</td>
+<td align="center"><a href="http://bioconductor.org/checkResults/release/bioc-LATEST/systemPipeR"><img src="http://bioconductor.org/shields/build/release/bioc/systemPipeR.svg" alt="Bioconductor-release Build Status"></a></td>
+</tr>
+</tbody>
+</table>
+<!-- badges: end --><div id="introduction" class="section level3">
 <h3 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h3>
 <p><a href="http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html"><em>systemPipeR</em></a> is an R/Bioconductor package for building and running automated <em>end-to-end</em> analysis workflows for a wide range of research applications, including next-generation sequencing (NGS) experiments, such as RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq. Important features include a uniform workflow interface across different data analysis applications, automated report generation, and support for running both R and command-line software, such as NGS aligners or peak/variant callers, on local computers or compute clusters. The latter supports interactive job submissions and batch submissions to queuing systems of clusters. Efficient handling of complex sample sets and experimental designs is facilitated by a well-defined sample annotation infrastructure which improves reproducibility and user-friendliness of many typical analysis workflows in the NGS area.</p>
@@ -111,6 +143,7 @@ BiocManager::install("systemPipeRdata")</code></pre>
 <h4 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h4>
 <p>Instructions for running <em>systemPipeR</em> are given in its main <a href="http://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html"><em>vignette</em></a> (manual). The sample data set used in the vignette are provided by the data package <a href="http://www.bioconductor.org/packages/devel/data/experiment/html/systemPipeRdata.html"><em>systemPipeRdata</em></a>. The expected format to define NGS samples (<em>e.g.</em> FASTQ files) and their labels are given in <a href="https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/targets.txt"><em>targets.txt</em></a> and <a href="https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/targetsPE.txt"><em>targetsPE.txt</em></a> (latter is for PE reads). With the latest <a href="http://www.bioconductor.org/packages/release/bioc/html/systemPipeR.html">Bioconductor Release 3.9</a>, we are adopting for this functionality the widely used community standard <a href="https://www.commonwl.org/">Common Workflow Language</a> (CWL) for describing analysis workflows in a generic and reproducible manner, introducing <em><code>SYSargs2</code></em> workflow control class. Using this community standard in <em><code>systemPipeR</code></em> has many advantages. For instance, the integration of CWL allows running <em><code>sytemPipeR</code></em> workflows from a single specification instance either entirely from within R, from various command-line wrappers (e.g., <em>cwl-runner</em>) or from other languages (<em>, e.g.,</em> Bash or Python). The run parameters of command-line software are defined by param files that have a simplified YAML name/value structure. Here is a sample param file for <em>Hisat2</em>: <a href="https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/cwl/hisat2/hisat2-pe/hisat2-mapping-pe.cwl"><em>hisat2.cwl</em></a>. Templates for setting up custom project reports are provided by <a href="https://github.com/tgirke/systemPipeRdata"><em>systemPipeRdata</em></a>. The corresponding PDFs of these report templates are linked here: <a href="http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRNAseq.html">systemPipeRNAseq</a>, <a href="http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRIBOseq.html">systemPipeRIBOseq</a>, <a href="http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeChIPseq.html">systemPipeChIPseq</a> and <a href="http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeVARseq.html">systemPipeVARseq</a>.</p>
+</div>
 </div>
 </div>
 </div>

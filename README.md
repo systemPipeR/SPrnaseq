@@ -9,7 +9,7 @@
 [![build](http://www.bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR/)
 [![updated](http://www.bioconductor.org/shields/lastcommit/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR/)
 [![dependencies](http://www.bioconductor.org/shields/dependencies/devel/systemPipeR.svg)](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html#since)
-<!-- badges: end -->
+
 
 ## Software status
 
@@ -19,6 +19,7 @@
 | Travis CI | Linux | `NA` | 
 | Bioc ([_devel_](http://bioconductor.org/packages/devel/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-devel Build Status](http://bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR) | 
 | Bioc ([_release_](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/systemPipeR) | 
+<!-- badges: end -->
 
 ### Introduction
 
