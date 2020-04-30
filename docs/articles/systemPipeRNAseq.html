@@ -6,15 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RNA-Seq Workflow Template • systemPipeRNAseq</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="RNA-Seq Workflow Template">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="systemPipeRNAseq">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
   gtag('config', 'UA-158796879-1');
 </script>
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -52,12 +52,6 @@
   </a>
 </li>
 <li>
-  <a></a>
-</li>
-<li>
-  <a href="../articles/systemPipeRNAseq.html">Get started</a>
-</li>
-<li>
   <a href="../articles/systemPipeRNAseq.html">
     <span class="fas fa fas fa-book"></span>
      
@@ -67,7 +61,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/tgirke/systemPipeR">
+  <a href="https://github.com/systemPipeR/systemPipeRNAseq">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -91,7 +85,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>RNA-Seq Workflow Template</h1>
+      <h1 data-toc-skip>RNA-Seq Workflow Template</h1>
                         <h4 class="author">Author: Daniela Cassol (<a href="mailto:danielac@ucr.edu" class="email">danielac@ucr.edu</a>) and Thomas Girke (<a href="mailto:thomas.girke@ucr.edu" class="email">thomas.girke@ucr.edu</a>)</h4>
             
       
@@ -141,15 +135,15 @@ document.addEventListener("DOMContentLoaded", function() {
 <p>Alternatively, this can be done from the command-line as find here.</p>
 <p>Now open the R markdown script <code>systemPipeRNAseq.Rmd</code>in your R IDE (<em>e.g.</em> vim-r or RStudio) and run the workflow as outlined below. If you work under Vim-R-Tmux, the following command sequence will connect the user in an interactive session with a node on the cluster [TODO: fix, point to the main vignette]. The code of the <code>Rmd</code>script can then be sent from Vim on the login (head) node to an open R session running on the corresponding computer node. This is important since Tmux sessions should not be run on the computer nodes.</p>
 <p>Now check whether your R session is running on a computer node of the cluster and not on a head node.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/system.html">system</a></span>(<span class="st">"hostname"</span>)  <span class="co"># should return name of a compute node starting with i or c </span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>()  <span class="co"># checks current working directory of R session</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span>()  <span class="co"># returns content of current working directory</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span>(<span class="st">"hostname"</span>)  <span class="co"># should return name of a compute node starting with i or c </span>
+<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span>()  <span class="co"># checks current working directory of R session</span>
+<span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span>()  <span class="co"># returns content of current working directory</span></pre></body></html></div>
 </div>
 <div id="required-packages-and-resources" class="section level2">
 <h2 class="hasAnchor">
 <a href="#required-packages-and-resources" class="anchor"></a>Required packages and resources</h2>
 <p>The <code>systemPipeR</code> package needs to be loaded to perform the analysis steps shown in this report <span class="citation">(H Backman and Girke 2016)</span>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(systemPipeR)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">systemPipeR</span>)</pre></body></html></div>
 <p>If applicable load custom functions not provided by <code>systemPipeR</code> package.</p>
 <p>To apply workflows to custom data, the user needs to modify the <em><code>targets</code></em> file and if necessary update the corresponding <em><code>.cwl</code></em> and <em><code>.yml</code></em> files. A collection of pre-generated <em><code>.cwl</code></em> and <em><code>.yml</code></em> files are provided in the <em><code>param/cwl</code></em> subdirectory of each workflow template. They are also viewable in the GitHub repository of <em><code>systemPipeRdata</code></em> (<a href="https://github.com/tgirke/systemPipeRdata/tree/master/inst/extdata/param">see here</a>).</p>
 </div>
@@ -157,9 +151,9 @@ document.addEventListener("DOMContentLoaded", function() {
 <h2 class="hasAnchor">
 <a href="#experiment-definition-provided-by-targets-file" class="anchor"></a>Experiment definition provided by <code>targets</code> file</h2>
 <p>The <code>targets</code> file defines all FASTQ files and sample comparisons of the analysis workflow.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">targetspath &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"targets.txt"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">targets &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(targetspath, <span class="dt">comment.char =</span> <span class="st">"#"</span>)[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">targets</a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">targetspath</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"targets.txt"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<span class="no">targets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="no">targetspath</span>, <span class="kw">comment.char</span> <span class="kw">=</span> <span class="st">"#"</span>)[, <span class="fl">1</span>:<span class="fl">4</span>]
+<span class="no">targets</span></pre></body></html></div>
 <pre><code>##                       FileName SampleName Factor SampleLong
 ## 1  ./data/SRR446027_1.fastq.gz        M1A     M1  Mock.1h.A
 ## 2  ./data/SRR446028_1.fastq.gz        M1B     M1  Mock.1h.B
@@ -189,29 +183,29 @@ document.addEventListener("DOMContentLoaded", function() {
 <a href="#read-quality-filtering-and-trimming" class="anchor"></a>Read quality filtering and trimming</h2>
 <p>The function <code>preprocessReads</code> allows to apply predefined or custom read preprocessing functions to all FASTQ files referenced in a <code>SYSargs2</code> container, such as quality filtering or adapter trimming routines. The paths to the resulting output FASTQ files are stored in the <code>output</code> slot of the <code>SYSargs2</code> object. The following example performs adapter trimming with the <code>trimLRPatterns</code> function from the <code>Biostrings</code> package. After the trimming step a new targets file is generated (here <code>targets_trim.txt</code>) containing the paths to the trimmed FASTQ files. The new targets file can be used for the next workflow step with an updated <code>SYSargs2</code> instance, <em>e.g.</em> running the NGS alignments using the trimmed FASTQ files.</p>
 <p>Construct <em><code>SYSargs2</code></em> object from <em><code>cwl</code></em> and <em><code>yml</code></em> param and <em><code>targets</code></em> files.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">dir_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/preprocessReads/trim-se"</span>, </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">trim &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="dt">targets =</span> targetspath, <span class="dt">wf_file =</span> <span class="st">"trim-se.cwl"</span>, </a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="dt">input_file =</span> <span class="st">"trim-se.yml"</span>, <span class="dt">dir_path =</span> dir_path)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">trim &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(trim, <span class="dt">inputvars =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">FileName =</span> <span class="st">"_FASTQ_PATH1_"</span>, </a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">SampleName =</span> <span class="st">"_SampleName_"</span>))</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">trim</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(trim)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/preprocessReads.html">preprocessReads</a></span>(<span class="dt">args =</span> trim, <span class="dt">Fct =</span> <span class="st">"trimLRPatterns(Rpattern='GCCCGGGTAA', </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">                subject=fq)"</span>, </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">batchsize =</span> <span class="fl">1e+05</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>, <span class="dt">compress =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/writeTargetsout.html">writeTargetsout</a></span>(<span class="dt">x =</span> trim, <span class="dt">file =</span> <span class="st">"targets_trimPE.txt"</span>, <span class="dt">step =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">new_col =</span> <span class="st">"FileName1"</span>, <span class="dt">new_col_output_index =</span> <span class="dv">1</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/preprocessReads/trim-se"</span>,
+    <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<span class="no">trim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="no">targetspath</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"trim-se.cwl"</span>,
+    <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"trim-se.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
+<span class="no">trim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">trim</span>, <span class="kw">inputvars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">FileName</span> <span class="kw">=</span> <span class="st">"_FASTQ_PATH1_"</span>,
+    <span class="kw">SampleName</span> <span class="kw">=</span> <span class="st">"_SampleName_"</span>))
+<span class="no">trim</span>
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">output</a></span>(<span class="no">trim</span>)[<span class="fl">1</span>:<span class="fl">2</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/preprocessReads.html">preprocessReads</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">trim</span>, <span class="kw">Fct</span> <span class="kw">=</span> <span class="st">"trimLRPatterns(Rpattern='GCCCGGGTAA', 
+                subject=fq)"</span>,
+    <span class="kw">batchsize</span> <span class="kw">=</span> <span class="fl">1e+05</span>, <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">compress</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/writeTargetsout.html">writeTargetsout</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">trim</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"targets_trimPE.txt"</span>, <span class="kw">step</span> <span class="kw">=</span> <span class="fl">1</span>,
+    <span class="kw">new_col</span> <span class="kw">=</span> <span class="st">"FileName1"</span>, <span class="kw">new_col_output_index</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 </div>
 <div id="fastq-quality-report" class="section level2">
 <h2 class="hasAnchor">
 <a href="#fastq-quality-report" class="anchor"></a>FASTQ quality report</h2>
 <p>The following <code>seeFastq</code> and <code>seeFastqPlot</code> functions generate and plot a series of useful quality statistics for a set of FASTQ files including per cycle quality box plots, base proportions, base-level quality trends, relative k-mer diversity, length and occurrence distribution of reads, number of reads above quality cutoffs and mean quality distribution. The results are written to a PDF file named <code>fastqReport.pdf</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">fqlist &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html">seeFastq</a></span>(<span class="dt">fastq =</span> <span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs.html">infile1</a></span>(trim), <span class="dt">batchsize =</span> <span class="dv">10000</span>, </a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="dt">klength =</span> <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"./results/fastqReport.pdf"</span>, <span class="dt">height =</span> <span class="dv">18</span>, <span class="dt">width =</span> <span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(fqlist))</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html">seeFastqPlot</a></span>(fqlist)</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">fqlist</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html">seeFastq</a></span>(<span class="kw">fastq</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs.html">infile1</a></span>(<span class="no">trim</span>), <span class="kw">batchsize</span> <span class="kw">=</span> <span class="fl">10000</span>,
+    <span class="kw">klength</span> <span class="kw">=</span> <span class="fl">8</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"./results/fastqReport.pdf"</span>, <span class="kw">height</span> <span class="kw">=</span> <span class="fl">18</span>, <span class="kw">width</span> <span class="kw">=</span> <span class="fl">4</span> * <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">fqlist</span>))
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html">seeFastqPlot</a></span>(<span class="no">fqlist</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</pre></body></html></div>
 <img src="results/fastqReport.png"><div align="center">
 Figure 1: FASTQ quality report for 18 samples
 </div>
@@ -221,94 +215,58 @@ Figure 1: FASTQ quality report for 18 samples
 <div id="alignments" class="section level1">
 <h1 class="hasAnchor">
 <a href="#alignments" class="anchor"></a>Alignments</h1>
-<div id="read-mapping-with-bowtie2tophat2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#read-mapping-with-bowtie2tophat2" class="anchor"></a>Read mapping with <code>Bowtie2/Tophat2</code>
-</h2>
-<p>The NGS reads of this project will be aligned against the reference genome sequence using <code>Bowtie2/TopHat2</code> <span class="citation">(Kim et al. 2013; Langmead and Salzberg 2012)</span> in both interactive job submissions and batch submissions to queuing systems of clusters using the <em><code>systemPipeR's</code></em> new CWL command-line interface.</p>
-<p>Build <em><code>Bowtie2</code></em> index.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">dir_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/bowtie2/bowtie2-idx"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">idx &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="dt">targets =</span> <span class="ot">NULL</span>, <span class="dt">wf_file =</span> <span class="st">"bowtie2-index.cwl"</span>, </a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="dt">input_file =</span> <span class="st">"bowtie2-index.yml"</span>, <span class="dt">dir_path =</span> dir_path)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">idx &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(idx)</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">idx</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(idx)</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">## Run in single machine</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(idx, <span class="dt">make_bam =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p>The parameter settings of the aligner are defined in the <code>tophat2-mapping-pe.cwl</code> and <code>tophat2-mapping-pe.yml</code> files. The following shows how to construct the corresponding <em>SYSargs2</em> object, here <em>args</em>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">dir_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/tophat2/tophat2-se"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="dt">targets =</span> targetspath, <span class="dt">wf_file =</span> <span class="st">"tophat2-mapping-se.cwl"</span>, </a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="dt">input_file =</span> <span class="st">"tophat2-mapping-se.yml"</span>, <span class="dt">dir_path =</span> dir_path)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(args, <span class="dt">inputvars =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">FileName =</span> <span class="st">"_FASTQ_PATH1_"</span>, </a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="dt">SampleName =</span> <span class="st">"_SampleName_"</span>))</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">args</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(args)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(args)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">## Run in single machine</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(args, <span class="dt">make_bam =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>Submission of alignment jobs to compute cluster, here using 72 CPU cores (18 <code>qsub</code> processes each with 4 CPU cores).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">## Run on the cluster</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/moduleload.html">moduleload</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs.html">modules</a></span>(args))</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">resources &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">walltime =</span> <span class="dv">120</span>, <span class="dt">ntasks =</span> <span class="dv">1</span>, <span class="dt">ncpus =</span> <span class="dv">4</span>, <span class="dt">memory =</span> <span class="dv">1024</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">reg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/clusterRun.html">clusterRun</a></span>(args, <span class="dt">FUN =</span> runCommandline, <span class="dt">more.args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">args =</span> args, </a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">    <span class="dt">make_bam =</span> <span class="ot">TRUE</span>, <span class="dt">dir =</span> <span class="ot">FALSE</span>), <span class="dt">conffile =</span> <span class="st">".batchtools.conf.R"</span>, </a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">    <span class="dt">template =</span> <span class="st">"batchtools.slurm.tmpl"</span>, <span class="dt">Njobs =</span> <span class="dv">18</span>, <span class="dt">runid =</span> <span class="st">"01"</span>, </a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">    <span class="dt">resourceList =</span> resources)</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="kw">waitForJobs</span>(<span class="dt">reg =</span> reg)</a></code></pre></div>
-</div>
 <div id="read-mapping-with-hisat2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-mapping-with-hisat2" class="anchor"></a>Read mapping with <code>HISAT2</code>
 </h2>
 <p>The following steps will demonstrate how to use the short read aligner <code>Hisat2</code> <span class="citation">(Kim, Langmead, and Salzberg 2015)</span> in both interactive job submissions and batch submissions to queuing systems of clusters using the <em><code>systemPipeR's</code></em> new CWL command-line interface.</p>
 <p>Build <code>Hisat2</code> index.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">dir_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-idx"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">idx &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="dt">targets =</span> <span class="ot">NULL</span>, <span class="dt">wf_file =</span> <span class="st">"hisat2-index.cwl"</span>, </a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">    <span class="dt">input_file =</span> <span class="st">"hisat2-index.yml"</span>, <span class="dt">dir_path =</span> dir_path)</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">idx &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(idx)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">idx</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(idx)</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">## Run</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(idx, <span class="dt">make_bam =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-idx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"hisat2-index.cwl"</span>,
+    <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"hisat2-index.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
+<span class="no">idx</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">idx</span>)
+<span class="no">idx</span>
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">cmdlist</a></span>(<span class="no">idx</span>)
+
+<span class="co">## Run</span>
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">idx</span>, <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p>The parameter settings of the aligner are defined in the <code>hisat2-mapping-se.cwl</code> and <code>hisat2-mapping-se.yml</code> files. The following shows how to construct the corresponding <em>SYSargs2</em> object, here <em>args</em>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">dir_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-se"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="dt">targets =</span> targetspath, <span class="dt">wf_file =</span> <span class="st">"hisat2-mapping-se.cwl"</span>, </a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="dt">input_file =</span> <span class="st">"hisat2-mapping-se.yml"</span>, <span class="dt">dir_path =</span> dir_path)</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(args, <span class="dt">inputvars =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">FileName =</span> <span class="st">"_FASTQ_PATH1_"</span>, </a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">    <span class="dt">SampleName =</span> <span class="st">"_SampleName_"</span>))</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">args</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">cmdlist</a></span>(args)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(args)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">## Runc single Machine</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(args)</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(batchtools)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">resources &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">walltime =</span> <span class="dv">120</span>, <span class="dt">ntasks =</span> <span class="dv">1</span>, <span class="dt">ncpus =</span> <span class="dv">4</span>, <span class="dt">memory =</span> <span class="dv">1024</span>)</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">reg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/clusterRun.html">clusterRun</a></span>(args, <span class="dt">FUN =</span> runCommandline, <span class="dt">more.args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">args =</span> args, </a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="dt">make_bam =</span> <span class="ot">TRUE</span>, <span class="dt">dir =</span> <span class="ot">FALSE</span>), <span class="dt">conffile =</span> <span class="st">".batchtools.conf.R"</span>, </a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">    <span class="dt">template =</span> <span class="st">"batchtools.slurm.tmpl"</span>, <span class="dt">Njobs =</span> <span class="dv">18</span>, <span class="dt">runid =</span> <span class="st">"01"</span>, </a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">    <span class="dt">resourceList =</span> resources)</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/batchtools/man/getStatus.html">getStatus</a></span>(<span class="dt">reg =</span> reg)</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/batchtools/man/waitForJobs.html">waitForJobs</a></span>(<span class="dt">reg =</span> reg)</a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">args &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/output_update.html">output_update</a></span>(args, <span class="dt">dir =</span> <span class="ot">FALSE</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">extension =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".sam"</span>, </a>
-<a class="sourceLine" id="cb13-10" data-line-number="10">    <span class="st">".bam"</span>))  <span class="co">## Updates the output(args) to the right location in the subfolders</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">output</a></span>(args)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">dir_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata/cwl/hisat2/hisat2-se"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>)
+<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/loadWorkflow.html">loadWorkflow</a></span>(<span class="kw">targets</span> <span class="kw">=</span> <span class="no">targetspath</span>, <span class="kw">wf_file</span> <span class="kw">=</span> <span class="st">"hisat2-mapping-se.cwl"</span>,
+    <span class="kw">input_file</span> <span class="kw">=</span> <span class="st">"hisat2-mapping-se.yml"</span>, <span class="kw">dir_path</span> <span class="kw">=</span> <span class="no">dir_path</span>)
+<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderWF.html">renderWF</a></span>(<span class="no">args</span>, <span class="kw">inputvars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">FileName</span> <span class="kw">=</span> <span class="st">"_FASTQ_PATH1_"</span>,
+    <span class="kw">SampleName</span> <span class="kw">=</span> <span class="st">"_SampleName_"</span>))
+<span class="no">args</span>
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">cmdlist</a></span>(<span class="no">args</span>)[<span class="fl">1</span>:<span class="fl">2</span>]
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">output</a></span>(<span class="no">args</span>)[<span class="fl">1</span>:<span class="fl">2</span>]
+
+<span class="co">## Runc single Machine</span>
+<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/runCommandline.html">runCommandline</a></span>(<span class="no">args</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">batchtools</span>)
+<span class="no">resources</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">walltime</span> <span class="kw">=</span> <span class="fl">120</span>, <span class="kw">ntasks</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">ncpus</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">memory</span> <span class="kw">=</span> <span class="fl">1024</span>)
+<span class="no">reg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/clusterRun.html">clusterRun</a></span>(<span class="no">args</span>, <span class="kw">FUN</span> <span class="kw">=</span> <span class="no">runCommandline</span>, <span class="kw">more.args</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>,
+    <span class="kw">make_bam</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>), <span class="kw">conffile</span> <span class="kw">=</span> <span class="st">".batchtools.conf.R"</span>,
+    <span class="kw">template</span> <span class="kw">=</span> <span class="st">"batchtools.slurm.tmpl"</span>, <span class="kw">Njobs</span> <span class="kw">=</span> <span class="fl">18</span>, <span class="kw">runid</span> <span class="kw">=</span> <span class="st">"01"</span>,
+    <span class="kw">resourceList</span> <span class="kw">=</span> <span class="no">resources</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/batchtools/man/getStatus.html">getStatus</a></span>(<span class="kw">reg</span> <span class="kw">=</span> <span class="no">reg</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/batchtools/man/waitForJobs.html">waitForJobs</a></span>(<span class="kw">reg</span> <span class="kw">=</span> <span class="no">reg</span>)
+<span class="no">args</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/output_update.html">output_update</a></span>(<span class="no">args</span>, <span class="kw">dir</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">extension</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".sam"</span>,
+    <span class="st">".bam"</span>))  <span class="co">## Updates the output(args) to the right location in the subfolders</span>
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">output</a></span>(<span class="no">args</span>)</pre></body></html></div>
 <p>Check whether all BAM files have been created.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">outpaths &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(args, <span class="dt">slot =</span> <span class="st">"output"</span>, <span class="dt">subset =</span> <span class="dv">1</span>, <span class="dt">index =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(outpaths)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">outpaths</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(<span class="no">args</span>, <span class="kw">slot</span> <span class="kw">=</span> <span class="st">"output"</span>, <span class="kw">subset</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">1</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="no">outpaths</span>)</pre></body></html></div>
 </div>
 <div id="read-and-alignment-stats" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-and-alignment-stats" class="anchor"></a>Read and alignment stats</h2>
 <p>The following provides an overview of the number of reads in each sample and how many of them aligned to the reference.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">read_statsDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/alignStats.html">alignStats</a></span>(<span class="dt">args =</span> args)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(read_statsDF, <span class="st">"results/alignStats.xls"</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">    <span class="dt">quote =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">read_statsDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/alignStats.html">alignStats</a></span>(<span class="kw">args</span> <span class="kw">=</span> <span class="no">args</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">read_statsDF</span>, <span class="st">"results/alignStats.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)</pre></body></html></div>
 <p>The following shows the alignment statistics for a sample file provided by the <code>systemPipeR</code> package.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"alignStats.xls"</span>, <span class="dt">package =</span> <span class="st">"systemPipeR"</span>), </a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">    <span class="dt">header =</span> <span class="ot">TRUE</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"alignStats.xls"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"systemPipeR"</span>),
+    <span class="kw">header</span> <span class="kw">=</span> <span class="fl">TRUE</span>)[<span class="fl">1</span>:<span class="fl">4</span>, ]</pre></body></html></div>
 <pre><code>##   FileName Nreads2x Nalign Perc_Aligned Nalign_Primary
 ## 1      M1A   192918 177961     92.24697         177961
 ## 2      M1B   197484 159378     80.70426         159378
@@ -324,8 +282,8 @@ Figure 1: FASTQ quality report for 18 samples
 <h2 class="hasAnchor">
 <a href="#create-symbolic-links-for-viewing-bam-files-in-igv" class="anchor"></a>Create symbolic links for viewing BAM files in IGV</h2>
 <p>The <code>symLink2bam</code> function creates symbolic links to view the BAM alignment files in a genome browser such as IGV. The corresponding URLs are written to a file with a path specified under <code>urlfile</code> in the <code>results</code> directory.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/symLink2bam.html">symLink2bam</a></span>(<span class="dt">sysargs =</span> args, <span class="dt">htmldir =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"~/.html/"</span>, <span class="st">"somedir/"</span>), </a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">    <span class="dt">urlbase =</span> <span class="st">"http://biocluster.ucr.edu/~tgirke/"</span>, <span class="dt">urlfile =</span> <span class="st">"./results/IGVurl.txt"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/symLink2bam.html">symLink2bam</a></span>(<span class="kw">sysargs</span> <span class="kw">=</span> <span class="no">args</span>, <span class="kw">htmldir</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"~/.html/"</span>, <span class="st">"somedir/"</span>),
+    <span class="kw">urlbase</span> <span class="kw">=</span> <span class="st">"http://biocluster.ucr.edu/~tgirke/"</span>, <span class="kw">urlfile</span> <span class="kw">=</span> <span class="st">"./results/IGVurl.txt"</span>)</pre></body></html></div>
 </div>
 </div>
 <div id="read-quantification" class="section level1">
@@ -335,56 +293,56 @@ Figure 1: FASTQ quality report for 18 samples
 <h2 class="hasAnchor">
 <a href="#read-counting-with-summarizeoverlaps-in-parallel-mode-using-multiple-cores" class="anchor"></a>Read counting with <code>summarizeOverlaps</code> in parallel mode using multiple cores</h2>
 <p>Reads overlapping with annotation ranges of interest are counted for each sample using the <code>summarizeOverlaps</code> function <span class="citation">(Lawrence et al. 2013)</span>. The read counting is preformed for exonic gene regions in a non-strand-specific manner while ignoring overlaps among different genes. Subsequently, the expression count values are normalized by <em>reads per kp per million mapped reads</em> (RPKM). The raw read count table (<code>countDFeByg.xls</code>) and the corresponding RPKM table (<code>rpkmDFeByg.xls</code>) are written to separate files in the directory of this project. Parallelization is achieved with the <code>BiocParallel</code> package, here using 8 CPU cores.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GenomicFeatures"</span>)</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(BiocParallel)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">txdb &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/GenomicFeatures/man/makeTxDbFromGFF.html">makeTxDbFromGFF</a></span>(<span class="dt">file =</span> <span class="st">"data/tair10.gff"</span>, <span class="dt">format =</span> <span class="st">"gff"</span>, </a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">    <span class="dt">dataSource =</span> <span class="st">"TAIR"</span>, <span class="dt">organism =</span> <span class="st">"Arabidopsis thaliana"</span>)</a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw">saveDb</span>(txdb, <span class="dt">file =</span> <span class="st">"./data/tair10.sqlite"</span>)</a>
-<a class="sourceLine" id="cb19-6" data-line-number="6">txdb &lt;-<span class="st"> </span><span class="kw">loadDb</span>(<span class="st">"./data/tair10.sqlite"</span>)</a>
-<a class="sourceLine" id="cb19-7" data-line-number="7">outpaths &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(args, <span class="dt">slot =</span> <span class="st">"output"</span>, <span class="dt">subset =</span> <span class="dv">1</span>, <span class="dt">index =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb19-8" data-line-number="8">(align &lt;-<span class="st"> </span><span class="kw">readGAlignments</span>(outpaths[<span class="dv">1</span>]))  <span class="co"># Demonstrates how to read bam file into R</span></a>
-<a class="sourceLine" id="cb19-9" data-line-number="9">eByg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/GenomicFeatures/man/transcriptsBy.html">exonsBy</a></span>(txdb, <span class="dt">by =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gene"</span>))</a>
-<a class="sourceLine" id="cb19-10" data-line-number="10">bfl &lt;-<span class="st"> </span><span class="kw">BamFileList</span>(outpaths, <span class="dt">yieldSize =</span> <span class="dv">50000</span>, <span class="dt">index =</span> <span class="kw"><a href="https://rdrr.io/r/base/character.html">character</a></span>())</a>
-<a class="sourceLine" id="cb19-11" data-line-number="11">multicoreParam &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/BiocParallel/man/MulticoreParam-class.html">MulticoreParam</a></span>(<span class="dt">workers =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="kw"><a href="https://rdrr.io/pkg/BiocParallel/man/register.html">register</a></span>(multicoreParam)</a>
-<a class="sourceLine" id="cb19-13" data-line-number="13"><span class="kw"><a href="https://rdrr.io/pkg/BiocParallel/man/register.html">registered</a></span>()</a>
-<a class="sourceLine" id="cb19-14" data-line-number="14">counteByg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/BiocParallel/man/bplapply.html">bplapply</a></span>(bfl, <span class="cf">function</span>(x) <span class="kw">summarizeOverlaps</span>(eByg, </a>
-<a class="sourceLine" id="cb19-15" data-line-number="15">    x, <span class="dt">mode =</span> <span class="st">"Union"</span>, <span class="dt">ignore.strand =</span> <span class="ot">TRUE</span>, <span class="dt">inter.feature =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb19-16" data-line-number="16">    <span class="dt">singleEnd =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb19-17" data-line-number="17">countDFeByg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="dt">along =</span> counteByg), <span class="cf">function</span>(x) <span class="kw">assays</span>(counteByg[[x]])<span class="op">$</span>counts)</a>
-<a class="sourceLine" id="cb19-18" data-line-number="18"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(countDFeByg) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">rowRanges</span>(counteByg[[<span class="dv">1</span>]]))</a>
-<a class="sourceLine" id="cb19-19" data-line-number="19"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(countDFeByg) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(bfl)</a>
-<a class="sourceLine" id="cb19-20" data-line-number="20">rpkmDFeByg &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/apply.html">apply</a></span>(countDFeByg, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/returnRPKM.html">returnRPKM</a></span>(<span class="dt">counts =</span> x, </a>
-<a class="sourceLine" id="cb19-21" data-line-number="21">    <span class="dt">ranges =</span> eByg))</a>
-<a class="sourceLine" id="cb19-22" data-line-number="22"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(countDFeByg, <span class="st">"results/countDFeByg.xls"</span>, <span class="dt">col.names =</span> <span class="ot">NA</span>, </a>
-<a class="sourceLine" id="cb19-23" data-line-number="23">    <span class="dt">quote =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</a>
-<a class="sourceLine" id="cb19-24" data-line-number="24"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(rpkmDFeByg, <span class="st">"results/rpkmDFeByg.xls"</span>, <span class="dt">col.names =</span> <span class="ot">NA</span>, </a>
-<a class="sourceLine" id="cb19-25" data-line-number="25">    <span class="dt">quote =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GenomicFeatures"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">BiocParallel</span>)
+<span class="no">txdb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicFeatures/man/makeTxDbFromGFF.html">makeTxDbFromGFF</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"data/tair10.gff"</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"gff"</span>,
+    <span class="kw">dataSource</span> <span class="kw">=</span> <span class="st">"TAIR"</span>, <span class="kw">organism</span> <span class="kw">=</span> <span class="st">"Arabidopsis thaliana"</span>)
+<span class="fu">saveDb</span>(<span class="no">txdb</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"./data/tair10.sqlite"</span>)
+<span class="no">txdb</span> <span class="kw">&lt;-</span> <span class="fu">loadDb</span>(<span class="st">"./data/tair10.sqlite"</span>)
+<span class="no">outpaths</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/subsetWF.html">subsetWF</a></span>(<span class="no">args</span>, <span class="kw">slot</span> <span class="kw">=</span> <span class="st">"output"</span>, <span class="kw">subset</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">1</span>)
+(<span class="no">align</span> <span class="kw">&lt;-</span> <span class="fu">readGAlignments</span>(<span class="no">outpaths</span>[<span class="fl">1</span>]))  <span class="co"># Demonstrates how to read bam file into R</span>
+<span class="no">eByg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicFeatures/man/transcriptsBy.html">exonsBy</a></span>(<span class="no">txdb</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"gene"</span>))
+<span class="no">bfl</span> <span class="kw">&lt;-</span> <span class="fu">BamFileList</span>(<span class="no">outpaths</span>, <span class="kw">yieldSize</span> <span class="kw">=</span> <span class="fl">50000</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span>())
+<span class="no">multicoreParam</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocParallel/man/MulticoreParam-class.html">MulticoreParam</a></span>(<span class="kw">workers</span> <span class="kw">=</span> <span class="fl">2</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/BiocParallel/man/register.html">register</a></span>(<span class="no">multicoreParam</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/BiocParallel/man/register.html">registered</a></span>()
+<span class="no">counteByg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocParallel/man/bplapply.html">bplapply</a></span>(<span class="no">bfl</span>, <span class="kw">function</span>(<span class="no">x</span>) <span class="fu">summarizeOverlaps</span>(<span class="no">eByg</span>,
+    <span class="no">x</span>, <span class="kw">mode</span> <span class="kw">=</span> <span class="st">"Union"</span>, <span class="kw">ignore.strand</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">inter.feature</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">singleEnd</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<span class="no">countDFeByg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="kw">along</span> <span class="kw">=</span> <span class="no">counteByg</span>), <span class="kw">function</span>(<span class="no">x</span>) <span class="fu">assays</span>(<span class="no">counteByg</span><span class="kw">[[</span><span class="no">x</span>]])$<span class="no">counts</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="no">countDFeByg</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu">rowRanges</span>(<span class="no">counteByg</span><span class="kw">[[</span><span class="fl">1</span>]]))
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">countDFeByg</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">bfl</span>)
+<span class="no">rpkmDFeByg</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span>(<span class="no">countDFeByg</span>, <span class="fl">2</span>, <span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/returnRPKM.html">returnRPKM</a></span>(<span class="kw">counts</span> <span class="kw">=</span> <span class="no">x</span>,
+    <span class="kw">ranges</span> <span class="kw">=</span> <span class="no">eByg</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">countDFeByg</span>, <span class="st">"results/countDFeByg.xls"</span>, <span class="kw">col.names</span> <span class="kw">=</span> <span class="fl">NA</span>,
+    <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">rpkmDFeByg</span>, <span class="st">"results/rpkmDFeByg.xls"</span>, <span class="kw">col.names</span> <span class="kw">=</span> <span class="fl">NA</span>,
+    <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)</pre></body></html></div>
 <p>Sample of data slice of count table</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">check.names =</span> <span class="ot">FALSE</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, </a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">    <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
+    <span class="fl">1</span>:<span class="fl">5</span>]</pre></body></html></div>
 <p>Sample of data slice of RPKM table</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/rpkmDFeByg.xls"</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, <span class="dt">check.names =</span> <span class="ot">FALSE</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, </a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">    <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/rpkmDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)[<span class="fl">1</span>:<span class="fl">4</span>,
+    <span class="fl">1</span>:<span class="fl">4</span>]</pre></body></html></div>
 <p>Note, for most statistical differential expression or abundance analysis methods, such as <code>edgeR</code> or <code>DESeq2</code>, the raw count values should be used as input. The usage of RPKM values should be restricted to specialty applications required by some users, <em>e.g.</em> manually comparing the expression levels among different genes or features.</p>
 </div>
 <div id="sample-wise-correlation-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sample-wise-correlation-analysis" class="anchor"></a>Sample-wise correlation analysis</h2>
 <p>The following computes the sample-wise Spearman correlation coefficients from the <code>rlog</code> transformed expression values generated with the <code>DESeq2</code> package. After transformation to a distance matrix, hierarchical clustering is performed with the <code>hclust</code> function and the result is plotted as a dendrogram (also see file <code>sample_tree.pdf</code>).</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(DESeq2, <span class="dt">quietly =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ape, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">countDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="st">"./results/countDFeByg.xls"</span>))</a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">colData &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">row.names =</span> <span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/targets.as.df.html">targets.as.df</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">targets</a></span>(args))<span class="op">$</span>SampleName, </a>
-<a class="sourceLine" id="cb22-5" data-line-number="5">    <span class="dt">condition =</span> <span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/targets.as.df.html">targets.as.df</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargs2list-methods.html">targets</a></span>(args))<span class="op">$</span>Factor)</a>
-<a class="sourceLine" id="cb22-6" data-line-number="6">dds &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromMatrix</a></span>(<span class="dt">countData =</span> countDF, <span class="dt">colData =</span> colData, </a>
-<a class="sourceLine" id="cb22-7" data-line-number="7">    <span class="dt">design =</span> <span class="op">~</span>condition)</a>
-<a class="sourceLine" id="cb22-8" data-line-number="8">d &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span>(<span class="kw">assay</span>(<span class="kw"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span>(dds)), <span class="dt">method =</span> <span class="st">"spearman"</span>)</a>
-<a class="sourceLine" id="cb22-9" data-line-number="9">hc &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>d))</a>
-<a class="sourceLine" id="cb22-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/sample_tree.pdf"</span>)</a>
-<a class="sourceLine" id="cb22-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/pkg/ape/man/plot.phylo.html">plot.phylo</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html">as.phylo</a></span>(hc), <span class="dt">type =</span> <span class="st">"p"</span>, <span class="dt">edge.col =</span> <span class="st">"blue"</span>, <span class="dt">edge.width =</span> <span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb22-12" data-line-number="12">    <span class="dt">show.node.label =</span> <span class="ot">TRUE</span>, <span class="dt">no.margin =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb22-13" data-line-number="13"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DESeq2</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ape</span>, <span class="kw">warn.conflicts</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="no">countDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span>(<span class="st">"./results/countDFeByg.xls"</span>))
+<span class="no">colData</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">row.names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/targets.as.df.html">targets.as.df</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">targets</a></span>(<span class="no">args</span>))$<span class="no">SampleName</span>,
+    <span class="kw">condition</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/targets.as.df.html">targets.as.df</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/sysargs2-methods.html">targets</a></span>(<span class="no">args</span>))$<span class="no">Factor</span>)
+<span class="no">dds</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSetFromMatrix</a></span>(<span class="kw">countData</span> <span class="kw">=</span> <span class="no">countDF</span>, <span class="kw">colData</span> <span class="kw">=</span> <span class="no">colData</span>,
+    <span class="kw">design</span> <span class="kw">=</span> ~<span class="no">condition</span>)
+<span class="no">d</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span>(<span class="fu">assay</span>(<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span>(<span class="no">dds</span>)), <span class="kw">method</span> <span class="kw">=</span> <span class="st">"spearman"</span>)
+<span class="no">hc</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span>(<span class="fl">1</span> - <span class="no">d</span>))
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/sample_tree.pdf"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/ape/man/plot.phylo.html">plot.phylo</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html">as.phylo</a></span>(<span class="no">hc</span>), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"p"</span>, <span class="kw">edge.col</span> <span class="kw">=</span> <span class="st">"blue"</span>, <span class="kw">edge.width</span> <span class="kw">=</span> <span class="fl">2</span>,
+    <span class="kw">show.node.label</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">no.margin</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</pre></body></html></div>
 <img src="results/sample_tree.png"><div align="center">
 Figure 2: Correlation dendrogram of samples
 </div>
@@ -399,36 +357,36 @@ Figure 2: Correlation dendrogram of samples
 <h2 class="hasAnchor">
 <a href="#run-edger" class="anchor"></a>Run <code>edgeR</code>
 </h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(edgeR)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">countDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">    <span class="dt">check.names =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">targets &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"targets.txt"</span>, <span class="dt">comment =</span> <span class="st">"#"</span>)</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">cmp &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/readComp.html">readComp</a></span>(<span class="dt">file =</span> <span class="st">"targets.txt"</span>, <span class="dt">format =</span> <span class="st">"matrix"</span>, <span class="dt">delim =</span> <span class="st">"-"</span>)</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">edgeDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/run_edgeR.html">run_edgeR</a></span>(<span class="dt">countDF =</span> countDF, <span class="dt">targets =</span> targets, <span class="dt">cmp =</span> cmp[[<span class="dv">1</span>]], </a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="dt">independent =</span> <span class="ot">FALSE</span>, <span class="dt">mdsplot =</span> <span class="st">""</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">edgeR</span>)
+<span class="no">countDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/countDFeByg.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>,
+    <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="no">targets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"targets.txt"</span>, <span class="kw">comment</span> <span class="kw">=</span> <span class="st">"#"</span>)
+<span class="no">cmp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/readComp.html">readComp</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"targets.txt"</span>, <span class="kw">format</span> <span class="kw">=</span> <span class="st">"matrix"</span>, <span class="kw">delim</span> <span class="kw">=</span> <span class="st">"-"</span>)
+<span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/run_edgeR.html">run_edgeR</a></span>(<span class="kw">countDF</span> <span class="kw">=</span> <span class="no">countDF</span>, <span class="kw">targets</span> <span class="kw">=</span> <span class="no">targets</span>, <span class="kw">cmp</span> <span class="kw">=</span> <span class="no">cmp</span><span class="kw">[[</span><span class="fl">1</span>]],
+    <span class="kw">independent</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">mdsplot</span> <span class="kw">=</span> <span class="st">""</span>)</pre></body></html></div>
 <p>Add gene descriptions</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="dt">dataset =</span> <span class="st">"athaliana_eg_gene"</span>, <span class="dt">host =</span> <span class="st">"plants.ensembl.org"</span>)</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">desc &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="dt">attributes =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"tair_locus"</span>, <span class="st">"description"</span>), <span class="dt">mart =</span> m)</a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">desc &lt;-<span class="st"> </span>desc[<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(desc[, <span class="dv">1</span>]), ]</a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">descv &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(desc[, <span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(descv) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(desc[, <span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">edgeDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(edgeDF, <span class="dt">Desc =</span> descv[<span class="kw"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(edgeDF)], </a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">    <span class="dt">check.names =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb24-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(edgeDF, <span class="st">"./results/edgeRglm_allcomp.xls"</span>, <span class="dt">quote =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">    <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, <span class="dt">col.names =</span> <span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">dataset</span> <span class="kw">=</span> <span class="st">"athaliana_eg_gene"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
+<span class="no">desc</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="kw">attributes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"tair_locus"</span>, <span class="st">"description"</span>), <span class="kw">mart</span> <span class="kw">=</span> <span class="no">m</span>)
+<span class="no">desc</span> <span class="kw">&lt;-</span> <span class="no">desc</span>[!<span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(<span class="no">desc</span>[, <span class="fl">1</span>]), ]
+<span class="no">descv</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">desc</span>[, <span class="fl">2</span>])
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">descv</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">desc</span>[, <span class="fl">1</span>])
+<span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">edgeDF</span>, <span class="kw">Desc</span> <span class="kw">=</span> <span class="no">descv</span>[<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="no">edgeDF</span>)],
+    <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">edgeDF</span>, <span class="st">"./results/edgeRglm_allcomp.xls"</span>, <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>, <span class="kw">col.names</span> <span class="kw">=</span> <span class="fl">NA</span>)</pre></body></html></div>
 </div>
 <div id="plot-deg-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-deg-results" class="anchor"></a>Plot DEG results</h2>
 <p>Filter and plot DEG results for up and down regulated genes. The definition of <em>up</em> and <em>down</em> is given in the corresponding help file. To open it, type <code><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">?filterDEGs</a></code> in the R console.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">edgeDF &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/edgeRglm_allcomp.xls"</span>, <span class="dt">row.names =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">    <span class="dt">check.names =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/DEGcounts.pdf"</span>)</a>
-<a class="sourceLine" id="cb25-4" data-line-number="4">DEG_list &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="dt">degDF =</span> edgeDF, <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Fold =</span> <span class="dv">2</span>, <span class="dt">FDR =</span> <span class="dv">20</span>))</a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a>
-<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(DEG_list<span class="op">$</span>Summary, <span class="st">"./results/DEGcounts.xls"</span>, <span class="dt">quote =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb25-7" data-line-number="7">    <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">edgeDF</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="st">"results/edgeRglm_allcomp.xls"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">1</span>,
+    <span class="kw">check.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/DEGcounts.pdf"</span>)
+<span class="no">DEG_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="kw">degDF</span> <span class="kw">=</span> <span class="no">edgeDF</span>, <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Fold</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">FDR</span> <span class="kw">=</span> <span class="fl">20</span>))
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">DEG_list</span>$<span class="no">Summary</span>, <span class="st">"./results/DEGcounts.xls"</span>, <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <img src="results/DEGcounts.png"><div align="center">
 Figure 3: Up and down regulated DEGs with FDR of 1%
 </div>
@@ -438,12 +396,12 @@ Figure 3: Up and down regulated DEGs with FDR of 1%
 <h2 class="hasAnchor">
 <a href="#venn-diagrams-of-deg-sets" class="anchor"></a>Venn diagrams of DEG sets</h2>
 <p>The <code>overLapper</code> function can compute Venn intersects for large numbers of sample sets (up to 20 or more) and plots 2-5 way Venn diagrams. A useful feature is the possibility to combine the counts from several Venn comparisons with the same number of sample sets in a single Venn diagram (here for 4 up and down DEG sets).</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">vennsetup &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(DEG_list<span class="op">$</span>Up[<span class="dv">6</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">type =</span> <span class="st">"vennsets"</span>)</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">vennsetdown &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(DEG_list<span class="op">$</span>Down[<span class="dv">6</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">type =</span> <span class="st">"vennsets"</span>)</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/vennplot.pdf"</span>)</a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/vennPlot.html">vennPlot</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(vennsetup, vennsetdown), <span class="dt">mymain =</span> <span class="st">""</span>, <span class="dt">mysub =</span> <span class="st">""</span>, </a>
-<a class="sourceLine" id="cb26-5" data-line-number="5">    <span class="dt">colmode =</span> <span class="dv">2</span>, <span class="dt">ccol =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blue"</span>, <span class="st">"red"</span>))</a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">vennsetup</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(<span class="no">DEG_list</span>$<span class="no">Up</span>[<span class="fl">6</span>:<span class="fl">9</span>], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"vennsets"</span>)
+<span class="no">vennsetdown</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html">overLapper</a></span>(<span class="no">DEG_list</span>$<span class="no">Down</span>[<span class="fl">6</span>:<span class="fl">9</span>], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"vennsets"</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"results/vennplot.pdf"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/vennPlot.html">vennPlot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">vennsetup</span>, <span class="no">vennsetdown</span>), <span class="kw">mymain</span> <span class="kw">=</span> <span class="st">""</span>, <span class="kw">mysub</span> <span class="kw">=</span> <span class="st">""</span>,
+    <span class="kw">colmode</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">ccol</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"blue"</span>, <span class="st">"red"</span>))
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</pre></body></html></div>
 <img src="results/vennplot.png"><div align="center">
 Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 </div>
@@ -457,67 +415,67 @@ Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 <h2 class="hasAnchor">
 <a href="#obtain-gene-to-go-mappings" class="anchor"></a>Obtain gene-to-GO mappings</h2>
 <p>The following shows how to obtain gene-to-GO mappings from <code>biomaRt</code> (here for <em>A. thaliana</em>) and how to organize them for the downstream GO term enrichment analysis. Alternatively, the gene-to-GO mappings can be obtained for many organisms from Bioconductor’s <code>*.db</code> genome annotation packages or GO annotation files provided by various genome databases. For each annotation this relatively slow preprocessing step needs to be performed only once. Subsequently, the preprocessed data can be loaded with the <code>load</code> function as shown in the next subsection.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>()  <span class="co"># To choose BioMart database</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>(<span class="dt">host =</span> <span class="st">"plants.ensembl.org"</span>)</a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="dt">host =</span> <span class="st">"plants.ensembl.org"</span>)</a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">listDatasets</a></span>(m)</a>
-<a class="sourceLine" id="cb27-6" data-line-number="6">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="dt">dataset =</span> <span class="st">"athaliana_eg_gene"</span>, <span class="dt">host =</span> <span class="st">"plants.ensembl.org"</span>)</a>
-<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span>(m)  <span class="co"># Choose data types you want to download</span></a>
-<a class="sourceLine" id="cb27-8" data-line-number="8">go &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="dt">attributes =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"go_id"</span>, <span class="st">"tair_locus"</span>, <span class="st">"namespace_1003"</span>), </a>
-<a class="sourceLine" id="cb27-9" data-line-number="9">    <span class="dt">mart =</span> m)</a>
-<a class="sourceLine" id="cb27-10" data-line-number="10">go &lt;-<span class="st"> </span>go[go[, <span class="dv">3</span>] <span class="op">!=</span><span class="st"> ""</span>, ]</a>
-<a class="sourceLine" id="cb27-11" data-line-number="11">go[, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(go[, <span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb27-12" data-line-number="12">go[go[, <span class="dv">3</span>] <span class="op">==</span><span class="st"> "molecular_function"</span>, <span class="dv">3</span>] &lt;-<span class="st"> "F"</span></a>
-<a class="sourceLine" id="cb27-13" data-line-number="13">go[go[, <span class="dv">3</span>] <span class="op">==</span><span class="st"> "biological_process"</span>, <span class="dv">3</span>] &lt;-<span class="st"> "P"</span></a>
-<a class="sourceLine" id="cb27-14" data-line-number="14">go[go[, <span class="dv">3</span>] <span class="op">==</span><span class="st"> "cellular_component"</span>, <span class="dv">3</span>] &lt;-<span class="st"> "C"</span></a>
-<a class="sourceLine" id="cb27-15" data-line-number="15">go[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, ]</a>
-<a class="sourceLine" id="cb27-16" data-line-number="16"><span class="kw"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="st">"./data/GO"</span>)</a>
-<a class="sourceLine" id="cb27-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(go, <span class="st">"data/GO/GOannotationsBiomart_mod.txt"</span>, <span class="dt">quote =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb27-18" data-line-number="18">    <span class="dt">row.names =</span> <span class="ot">FALSE</span>, <span class="dt">col.names =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</a>
-<a class="sourceLine" id="cb27-19" data-line-number="19">catdb &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">makeCATdb</a></span>(<span class="dt">myfile =</span> <span class="st">"data/GO/GOannotationsBiomart_mod.txt"</span>, </a>
-<a class="sourceLine" id="cb27-20" data-line-number="20">    <span class="dt">lib =</span> <span class="ot">NULL</span>, <span class="dt">org =</span> <span class="st">""</span>, <span class="dt">colno =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">idconv =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb27-21" data-line-number="21"><span class="kw"><a href="https://rdrr.io/r/base/save.html">save</a></span>(catdb, <span class="dt">file =</span> <span class="st">"data/GO/catdb.RData"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>()  <span class="co"># To choose BioMart database</span>
+<span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listMarts.html">listMarts</a></span>(<span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
+<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">listDatasets</a></span>(<span class="no">m</span>)
+<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">dataset</span> <span class="kw">=</span> <span class="st">"athaliana_eg_gene"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span>(<span class="no">m</span>)  <span class="co"># Choose data types you want to download</span>
+<span class="no">go</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="kw">attributes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"go_id"</span>, <span class="st">"tair_locus"</span>, <span class="st">"namespace_1003"</span>),
+    <span class="kw">mart</span> <span class="kw">=</span> <span class="no">m</span>)
+<span class="no">go</span> <span class="kw">&lt;-</span> <span class="no">go</span>[<span class="no">go</span>[, <span class="fl">3</span>] <span class="kw">!=</span> <span class="st">""</span>, ]
+<span class="no">go</span>[, <span class="fl">3</span>] <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">go</span>[, <span class="fl">3</span>])
+<span class="no">go</span>[<span class="no">go</span>[, <span class="fl">3</span>] <span class="kw">==</span> <span class="st">"molecular_function"</span>, <span class="fl">3</span>] <span class="kw">&lt;-</span> <span class="st">"F"</span>
+<span class="no">go</span>[<span class="no">go</span>[, <span class="fl">3</span>] <span class="kw">==</span> <span class="st">"biological_process"</span>, <span class="fl">3</span>] <span class="kw">&lt;-</span> <span class="st">"P"</span>
+<span class="no">go</span>[<span class="no">go</span>[, <span class="fl">3</span>] <span class="kw">==</span> <span class="st">"cellular_component"</span>, <span class="fl">3</span>] <span class="kw">&lt;-</span> <span class="st">"C"</span>
+<span class="no">go</span>[<span class="fl">1</span>:<span class="fl">4</span>, ]
+<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="st">"./data/GO"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span>(<span class="no">go</span>, <span class="st">"data/GO/GOannotationsBiomart_mod.txt"</span>, <span class="kw">quote</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">col.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\t"</span>)
+<span class="no">catdb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">makeCATdb</a></span>(<span class="kw">myfile</span> <span class="kw">=</span> <span class="st">"data/GO/GOannotationsBiomart_mod.txt"</span>,
+    <span class="kw">lib</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">org</span> <span class="kw">=</span> <span class="st">""</span>, <span class="kw">colno</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>), <span class="kw">idconv</span> <span class="kw">=</span> <span class="kw">NULL</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span>(<span class="no">catdb</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"data/GO/catdb.RData"</span>)</pre></body></html></div>
 </div>
 <div id="batch-go-term-enrichment-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#batch-go-term-enrichment-analysis" class="anchor"></a>Batch GO term enrichment analysis</h2>
 <p>Apply the enrichment analysis to the DEG sets obtained the above differential expression analysis. Note, in the following example the <code>FDR</code> filter is set here to an unreasonably high value, simply because of the small size of the toy data set used in this vignette. Batch enrichment analysis of many gene sets is performed with the function. When <code>method=all</code>, it returns all GO terms passing the p-value cutoff specified under the <code>cutoff</code> arguments. When <code>method=slim</code>, it returns only the GO terms specified under the <code>myslimv</code> argument. The given example shows how a GO slim vector for a specific organism can be obtained from BioMart.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="st">"data/GO/catdb.RData"</span>)</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">DEG_list &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="dt">degDF =</span> edgeDF, <span class="dt">filter =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Fold =</span> <span class="dv">2</span>, <span class="dt">FDR =</span> <span class="dv">50</span>), </a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">    <span class="dt">plot =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">up_down &lt;-<span class="st"> </span>DEG_list<span class="op">$</span>UporDown</a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(up_down) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(up_down), <span class="st">"_up_down"</span>, <span class="dt">sep =</span> <span class="st">""</span>)</a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">up &lt;-<span class="st"> </span>DEG_list<span class="op">$</span>Up</a>
-<a class="sourceLine" id="cb28-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(up) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(up), <span class="st">"_up"</span>, <span class="dt">sep =</span> <span class="st">""</span>)</a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">down &lt;-<span class="st"> </span>DEG_list<span class="op">$</span>Down</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(down) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(down), <span class="st">"_down"</span>, <span class="dt">sep =</span> <span class="st">""</span>)</a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">DEGlist &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(up_down, up, down)</a>
-<a class="sourceLine" id="cb28-12" data-line-number="12">DEGlist &lt;-<span class="st"> </span>DEGlist[<span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(DEGlist, length) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb28-13" data-line-number="13">BatchResult &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">GOCluster_Report</a></span>(<span class="dt">catdb =</span> catdb, <span class="dt">setlist =</span> DEGlist, </a>
-<a class="sourceLine" id="cb28-14" data-line-number="14">    <span class="dt">method =</span> <span class="st">"all"</span>, <span class="dt">id_type =</span> <span class="st">"gene"</span>, <span class="dt">CLSZ =</span> <span class="dv">2</span>, <span class="dt">cutoff =</span> <span class="fl">0.9</span>, </a>
-<a class="sourceLine" id="cb28-15" data-line-number="15">    <span class="dt">gocats =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"MF"</span>, <span class="st">"BP"</span>, <span class="st">"CC"</span>), <span class="dt">recordSpecGO =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb28-16" data-line-number="16"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)</a>
-<a class="sourceLine" id="cb28-17" data-line-number="17">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="dt">dataset =</span> <span class="st">"athaliana_eg_gene"</span>, <span class="dt">host =</span> <span class="st">"plants.ensembl.org"</span>)</a>
-<a class="sourceLine" id="cb28-18" data-line-number="18">goslimvec &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="dt">attributes =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"goslim_goa_accession"</span>), </a>
-<a class="sourceLine" id="cb28-19" data-line-number="19">    <span class="dt">mart =</span> m)[, <span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb28-20" data-line-number="20">BatchResultslim &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">GOCluster_Report</a></span>(<span class="dt">catdb =</span> catdb, <span class="dt">setlist =</span> DEGlist, </a>
-<a class="sourceLine" id="cb28-21" data-line-number="21">    <span class="dt">method =</span> <span class="st">"slim"</span>, <span class="dt">id_type =</span> <span class="st">"gene"</span>, <span class="dt">myslimv =</span> goslimvec, <span class="dt">CLSZ =</span> <span class="dv">10</span>, </a>
-<a class="sourceLine" id="cb28-22" data-line-number="22">    <span class="dt">cutoff =</span> <span class="fl">0.01</span>, <span class="dt">gocats =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"MF"</span>, <span class="st">"BP"</span>, <span class="st">"CC"</span>), <span class="dt">recordSpecGO =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span>(<span class="st">"data/GO/catdb.RData"</span>)
+<span class="no">DEG_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html">filterDEGs</a></span>(<span class="kw">degDF</span> <span class="kw">=</span> <span class="no">edgeDF</span>, <span class="kw">filter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Fold</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">FDR</span> <span class="kw">=</span> <span class="fl">50</span>),
+    <span class="kw">plot</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="no">up_down</span> <span class="kw">&lt;-</span> <span class="no">DEG_list</span>$<span class="no">UporDown</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">up_down</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">up_down</span>), <span class="st">"_up_down"</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">""</span>)
+<span class="no">up</span> <span class="kw">&lt;-</span> <span class="no">DEG_list</span>$<span class="no">Up</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">up</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">up</span>), <span class="st">"_up"</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">""</span>)
+<span class="no">down</span> <span class="kw">&lt;-</span> <span class="no">DEG_list</span>$<span class="no">Down</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">down</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">down</span>), <span class="st">"_down"</span>, <span class="kw">sep</span> <span class="kw">=</span> <span class="st">""</span>)
+<span class="no">DEGlist</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">up_down</span>, <span class="no">up</span>, <span class="no">down</span>)
+<span class="no">DEGlist</span> <span class="kw">&lt;-</span> <span class="no">DEGlist</span>[<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="no">DEGlist</span>, <span class="no">length</span>) <span class="kw">&gt;</span> <span class="fl">0</span>]
+<span class="no">BatchResult</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">GOCluster_Report</a></span>(<span class="kw">catdb</span> <span class="kw">=</span> <span class="no">catdb</span>, <span class="kw">setlist</span> <span class="kw">=</span> <span class="no">DEGlist</span>,
+    <span class="kw">method</span> <span class="kw">=</span> <span class="st">"all"</span>, <span class="kw">id_type</span> <span class="kw">=</span> <span class="st">"gene"</span>, <span class="kw">CLSZ</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">cutoff</span> <span class="kw">=</span> <span class="fl">0.9</span>,
+    <span class="kw">gocats</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"MF"</span>, <span class="st">"BP"</span>, <span class="st">"CC"</span>), <span class="kw">recordSpecGO</span> <span class="kw">=</span> <span class="kw">NULL</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biomaRt"</span>)
+<span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span>(<span class="st">"plants_mart"</span>, <span class="kw">dataset</span> <span class="kw">=</span> <span class="st">"athaliana_eg_gene"</span>, <span class="kw">host</span> <span class="kw">=</span> <span class="st">"plants.ensembl.org"</span>)
+<span class="no">goslimvec</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span>(<span class="kw">attributes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"goslim_goa_accession"</span>),
+    <span class="kw">mart</span> <span class="kw">=</span> <span class="no">m</span>)[, <span class="fl">1</span>])
+<span class="no">BatchResultslim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">GOCluster_Report</a></span>(<span class="kw">catdb</span> <span class="kw">=</span> <span class="no">catdb</span>, <span class="kw">setlist</span> <span class="kw">=</span> <span class="no">DEGlist</span>,
+    <span class="kw">method</span> <span class="kw">=</span> <span class="st">"slim"</span>, <span class="kw">id_type</span> <span class="kw">=</span> <span class="st">"gene"</span>, <span class="kw">myslimv</span> <span class="kw">=</span> <span class="no">goslimvec</span>, <span class="kw">CLSZ</span> <span class="kw">=</span> <span class="fl">10</span>,
+    <span class="kw">cutoff</span> <span class="kw">=</span> <span class="fl">0.01</span>, <span class="kw">gocats</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"MF"</span>, <span class="st">"BP"</span>, <span class="st">"CC"</span>), <span class="kw">recordSpecGO</span> <span class="kw">=</span> <span class="kw">NULL</span>)</pre></body></html></div>
 </div>
 <div id="plot-batch-go-term-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-batch-go-term-results" class="anchor"></a>Plot batch GO term results</h2>
 <p>The <code>data.frame</code> generated by <code>GOCluster</code> can be plotted with the <code>goBarplot</code> function. Because of the variable size of the sample sets, it may not always be desirable to show the results from different DEG sets in the same bar plot. Plotting single sample sets is achieved by subsetting the input data frame as shown in the first line of the following example.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">gos &lt;-<span class="st"> </span>BatchResultslim[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"M6-V6_up_down"</span>, BatchResultslim<span class="op">$</span>CLID), </a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">    ]</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">gos &lt;-<span class="st"> </span>BatchResultslim</a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"GOslimbarplotMF.pdf"</span>, <span class="dt">height =</span> <span class="dv">8</span>, <span class="dt">width =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(gos, <span class="dt">gocat =</span> <span class="st">"MF"</span>)</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(gos, <span class="dt">gocat =</span> <span class="st">"BP"</span>)</a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(gos, <span class="dt">gocat =</span> <span class="st">"CC"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="no">gos</span> <span class="kw">&lt;-</span> <span class="no">BatchResultslim</span>[<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"M6-V6_up_down"</span>, <span class="no">BatchResultslim</span>$<span class="no">CLID</span>),
+    ]
+<span class="no">gos</span> <span class="kw">&lt;-</span> <span class="no">BatchResultslim</span>
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"GOslimbarplotMF.pdf"</span>, <span class="kw">height</span> <span class="kw">=</span> <span class="fl">8</span>, <span class="kw">width</span> <span class="kw">=</span> <span class="fl">10</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(<span class="no">gos</span>, <span class="kw">gocat</span> <span class="kw">=</span> <span class="st">"MF"</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(<span class="no">gos</span>, <span class="kw">gocat</span> <span class="kw">=</span> <span class="st">"BP"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html">goBarplot</a></span>(<span class="no">gos</span>, <span class="kw">gocat</span> <span class="kw">=</span> <span class="st">"CC"</span>)</pre></body></html></div>
 <img src="results/GOslimbarplotMF.png"><div align="center">
 Figure 5: GO Slim Barplot for MF Ontology
 </div>
@@ -528,13 +486,13 @@ Figure 5: GO Slim Barplot for MF Ontology
 <h1 class="hasAnchor">
 <a href="#clustering-and-heat-maps" class="anchor"></a>Clustering and heat maps</h1>
 <p>The following example performs hierarchical clustering on the <code>rlog</code> transformed expression matrix subsetted by the DEGs identified in the above differential expression analysis. It uses a Pearson correlation-based distance measure and complete linkage for cluster joining.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pheatmap)</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">geneids &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span>(DEG_list[[<span class="dv">1</span>]])))</a>
-<a class="sourceLine" id="cb30-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">assay</span>(<span class="kw"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span>(dds))[geneids, ]</a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"heatmap1.pdf"</span>)</a>
-<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/pkg/pheatmap/man/pheatmap.html">pheatmap</a></span>(y, <span class="dt">scale =</span> <span class="st">"row"</span>, <span class="dt">clustering_distance_rows =</span> <span class="st">"correlation"</span>, </a>
-<a class="sourceLine" id="cb30-6" data-line-number="6">    <span class="dt">clustering_distance_cols =</span> <span class="st">"correlation"</span>)</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pheatmap</span>)
+<span class="no">geneids</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span>(<span class="no">DEG_list</span><span class="kw">[[</span><span class="fl">1</span>]])))
+<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu">assay</span>(<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/rlog.html">rlog</a></span>(<span class="no">dds</span>))[<span class="no">geneids</span>, ]
+<span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"heatmap1.pdf"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/pheatmap/man/pheatmap.html">pheatmap</a></span>(<span class="no">y</span>, <span class="kw">scale</span> <span class="kw">=</span> <span class="st">"row"</span>, <span class="kw">clustering_distance_rows</span> <span class="kw">=</span> <span class="st">"correlation"</span>,
+    <span class="kw">clustering_distance_cols</span> <span class="kw">=</span> <span class="st">"correlation"</span>)
+<span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()</pre></body></html></div>
 <img src="results/heatmap1.png"><div align="center">
 Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 </div>
@@ -543,10 +501,10 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 <div id="version-information" class="section level1">
 <h1 class="hasAnchor">
 <a href="#version-information" class="anchor"></a>Version Information</h1>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</a></code></pre></div>
-<pre><code>## R Under development (unstable) (2020-02-05 r77773)
+<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</pre></body></html></div>
+<pre><code>## R Under development (unstable) (2020-03-31 r78116)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 19.04
+## Running under: Ubuntu 20.04 LTS
 ## 
 ## Matrix products: default
 ## BLAS:   /usr/local/lib/R/lib/libRblas.so
@@ -565,69 +523,70 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 ## [6] utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] batchtools_0.9.12           ape_5.3                    
-##  [3] ggplot2_3.2.1               systemPipeR_1.21.2         
-##  [5] ShortRead_1.45.3            GenomicAlignments_1.23.1   
-##  [7] SummarizedExperiment_1.17.2 DelayedArray_0.13.4        
-##  [9] matrixStats_0.55.0          Biobase_2.47.2             
-## [11] BiocParallel_1.21.2         Rsamtools_2.3.4            
-## [13] Biostrings_2.55.4           XVector_0.27.0             
-## [15] GenomicRanges_1.39.2        GenomeInfoDb_1.23.13       
-## [17] IRanges_2.21.3              S4Vectors_0.25.12          
-## [19] BiocGenerics_0.33.0         BiocStyle_2.15.6           
+##  [1] batchtools_0.9.13           ape_5.3                    
+##  [3] ggplot2_3.3.0               systemPipeR_1.21.6         
+##  [5] ShortRead_1.45.4            GenomicAlignments_1.23.2   
+##  [7] SummarizedExperiment_1.17.5 DelayedArray_0.13.12       
+##  [9] matrixStats_0.56.0          Biobase_2.47.3             
+## [11] BiocParallel_1.21.2         Rsamtools_2.3.7            
+## [13] Biostrings_2.55.7           XVector_0.27.2             
+## [15] GenomicRanges_1.39.3        GenomeInfoDb_1.23.16       
+## [17] IRanges_2.21.8              S4Vectors_0.25.15          
+## [19] BiocGenerics_0.33.3         BiocStyle_2.15.6           
 ## 
 ## loaded via a namespace (and not attached):
 ##   [1] colorspace_1.4-1         rjson_0.2.20            
-##   [3] hwriter_1.3.2            rprojroot_1.3-2         
-##   [5] fs_1.3.1                 rstudioapi_0.11         
-##   [7] bit64_0.9-7              AnnotationDbi_1.49.1    
-##   [9] codetools_0.2-16         splines_4.0.0           
-##  [11] knitr_1.28               annotate_1.65.1         
-##  [13] GO.db_3.10.0             dbplyr_1.4.2            
-##  [15] png_0.1-7                pheatmap_1.0.12         
-##  [17] graph_1.65.1             BiocManager_1.30.10     
-##  [19] compiler_4.0.0           httr_1.4.1              
-##  [21] GOstats_2.53.0           backports_1.1.5         
-##  [23] assertthat_0.2.1         Matrix_1.2-18           
-##  [25] lazyeval_0.2.2           limma_3.43.4            
-##  [27] formatR_1.7              htmltools_0.4.0         
-##  [29] prettyunits_1.1.1        tools_4.0.0             
-##  [31] gtable_0.3.0             glue_1.3.1              
-##  [33] GenomeInfoDbData_1.2.2   Category_2.53.1         
-##  [35] dplyr_0.8.4              rappdirs_0.3.1          
-##  [37] Rcpp_1.0.3               pkgdown_1.4.1           
-##  [39] vctrs_0.2.3              nlme_3.1-144            
-##  [41] rtracklayer_1.47.0       xfun_0.12               
-##  [43] stringr_1.4.0            lifecycle_0.1.0         
-##  [45] XML_3.99-0.3             edgeR_3.29.0            
-##  [47] zlibbioc_1.33.1          MASS_7.3-51.5           
-##  [49] scales_1.1.0             BSgenome_1.55.3         
-##  [51] VariantAnnotation_1.33.0 hms_0.5.3               
-##  [53] RBGL_1.63.1              RColorBrewer_1.1-2      
-##  [55] yaml_2.2.1               curl_4.3                
-##  [57] memoise_1.1.0            biomaRt_2.43.3          
-##  [59] latticeExtra_0.6-29      stringi_1.4.6           
-##  [61] RSQLite_2.2.0            genefilter_1.69.0       
-##  [63] desc_1.2.0               checkmate_2.0.0         
-##  [65] GenomicFeatures_1.39.5   rlang_0.4.4             
-##  [67] pkgconfig_2.0.3          bitops_1.0-6            
-##  [69] evaluate_0.14            lattice_0.20-38         
-##  [71] purrr_0.3.3              bit_1.1-15.2            
-##  [73] tidyselect_1.0.0         GSEABase_1.49.0         
-##  [75] AnnotationForge_1.29.2   magrittr_1.5            
-##  [77] bookdown_0.17            R6_2.4.1                
-##  [79] base64url_1.4            DBI_1.1.0               
-##  [81] withr_2.1.2              pillar_1.4.3            
-##  [83] survival_3.1-8           RCurl_1.98-1.1          
-##  [85] tibble_2.1.3             crayon_1.3.4            
-##  [87] BiocFileCache_1.11.4     rmarkdown_2.1           
-##  [89] jpeg_0.1-8.1             progress_1.2.2          
-##  [91] locfit_1.5-9.1           grid_4.0.0              
-##  [93] data.table_1.12.8        blob_1.2.1              
-##  [95] Rgraphviz_2.31.0         digest_0.6.24           
-##  [97] xtable_1.8-4             brew_1.0-6              
-##  [99] openssl_1.4.1            munsell_0.5.0           
-## [101] askpass_1.1</code></pre>
+##   [3] hwriter_1.3.2            ellipsis_0.3.0          
+##   [5] rprojroot_1.3-2          fs_1.4.1                
+##   [7] rstudioapi_0.11          bit64_0.9-7             
+##   [9] AnnotationDbi_1.49.1     fansi_0.4.1             
+##  [11] codetools_0.2-16         splines_4.1.0           
+##  [13] knitr_1.28               annotate_1.65.1         
+##  [15] GO.db_3.10.0             dbplyr_1.4.2            
+##  [17] png_0.1-7                pheatmap_1.0.12         
+##  [19] graph_1.65.2             BiocManager_1.30.10     
+##  [21] compiler_4.1.0           httr_1.4.1              
+##  [23] GOstats_2.53.0           backports_1.1.6         
+##  [25] assertthat_0.2.1         Matrix_1.2-18           
+##  [27] limma_3.43.6             cli_2.0.2               
+##  [29] formatR_1.7              htmltools_0.4.0         
+##  [31] prettyunits_1.1.1        tools_4.1.0             
+##  [33] gtable_0.3.0             glue_1.4.0              
+##  [35] GenomeInfoDbData_1.2.2   Category_2.53.1         
+##  [37] dplyr_0.8.5              rappdirs_0.3.1          
+##  [39] Rcpp_1.0.4.6             pkgdown_1.5.1           
+##  [41] vctrs_0.2.4              nlme_3.1-145            
+##  [43] rtracklayer_1.47.0       xfun_0.13               
+##  [45] stringr_1.4.0            lifecycle_0.2.0         
+##  [47] XML_3.99-0.3             edgeR_3.29.1            
+##  [49] zlibbioc_1.33.1          MASS_7.3-51.5           
+##  [51] scales_1.1.0             BSgenome_1.55.4         
+##  [53] VariantAnnotation_1.33.4 hms_0.5.3               
+##  [55] RBGL_1.63.1              RColorBrewer_1.1-2      
+##  [57] yaml_2.2.1               curl_4.3                
+##  [59] memoise_1.1.0            biomaRt_2.43.5          
+##  [61] latticeExtra_0.6-29      stringi_1.4.6           
+##  [63] RSQLite_2.2.0            genefilter_1.69.0       
+##  [65] desc_1.2.0               checkmate_2.0.0         
+##  [67] GenomicFeatures_1.39.7   rlang_0.4.5             
+##  [69] pkgconfig_2.0.3          bitops_1.0-6            
+##  [71] evaluate_0.14            lattice_0.20-40         
+##  [73] purrr_0.3.3              bit_1.1-15.2            
+##  [75] tidyselect_1.0.0         GSEABase_1.49.1         
+##  [77] AnnotationForge_1.29.2   magrittr_1.5            
+##  [79] bookdown_0.18            R6_2.4.1                
+##  [81] base64url_1.4            DBI_1.1.0               
+##  [83] withr_2.1.2              pillar_1.4.3            
+##  [85] survival_3.1-11          RCurl_1.98-1.1          
+##  [87] tibble_3.0.0             crayon_1.3.4            
+##  [89] BiocFileCache_1.11.5     rmarkdown_2.1           
+##  [91] jpeg_0.1-8.1             progress_1.2.2          
+##  [93] locfit_1.5-9.4           grid_4.1.0              
+##  [95] data.table_1.12.8        blob_1.2.1              
+##  [97] Rgraphviz_2.31.0         digest_0.6.25           
+##  [99] xtable_1.8-4             brew_1.0-6              
+## [101] openssl_1.4.1            munsell_0.5.0           
+## [103] askpass_1.1</code></pre>
 </div>
 <div id="funding" class="section level1">
 <h1 class="hasAnchor">
@@ -647,12 +606,6 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 <div id="ref-Kim2015-ve">
 <p>Kim, Daehwan, Ben Langmead, and Steven L Salzberg. 2015. “HISAT: A Fast Spliced Aligner with Low Memory Requirements.” <em>Nat. Methods</em> 12 (4): 357–60.</p>
 </div>
-<div id="ref-Kim2013-vg">
-<p>Kim, Daehwan, Geo Pertea, Cole Trapnell, Harold Pimentel, Ryan Kelley, and Steven L Salzberg. 2013. “TopHat2: Accurate Alignment of Transcriptomes in the Presence of Insertions, Deletions and Gene Fusions.” <em>Genome Biol.</em> 14 (4): R36. <a href="https://doi.org/10.1186/gb-2013-14-4-r36">https://doi.org/10.1186/gb-2013-14-4-r36</a>.</p>
-</div>
-<div id="ref-Langmead2012-bs">
-<p>Langmead, Ben, and Steven L Salzberg. 2012. “Fast Gapped-Read Alignment with Bowtie 2.” <em>Nat. Methods</em> 9 (4). Nature Publishing Group: 357–59. <a href="https://doi.org/10.1038/nmeth.1923">https://doi.org/10.1038/nmeth.1923</a>.</p>
-</div>
 <div id="ref-Lawrence2013-kt">
 <p>Lawrence, Michael, Wolfgang Huber, Hervé Pagès, Patrick Aboyoun, Marc Carlson, Robert Gentleman, Martin T Morgan, and Vincent J Carey. 2013. “Software for Computing and Annotating Genomic Ranges.” <em>PLoS Comput. Biol.</em> 9 (8): e1003118. <a href="https://doi.org/10.1371/journal.pcbi.1003118">https://doi.org/10.1371/journal.pcbi.1003118</a>.</p>
 </div>
@@ -663,61 +616,11 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
-      <li>
-<a href="#samples-and-environment-settings">Samples and environment settings</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#environment-settings-and-input-data">Environment settings and input data</a></li>
-      <li><a href="#required-packages-and-resources">Required packages and resources</a></li>
-      <li><a href="#experiment-definition-provided-by-targets-file">Experiment definition provided by <code>targets</code> file</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#read-preprocessing">Read preprocessing</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#read-quality-filtering-and-trimming">Read quality filtering and trimming</a></li>
-      <li><a href="#fastq-quality-report">FASTQ quality report</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#alignments">Alignments</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#read-mapping-with-bowtie2tophat2">Read mapping with <code>Bowtie2/Tophat2</code></a></li>
-      <li><a href="#read-mapping-with-hisat2">Read mapping with <code>HISAT2</code></a></li>
-      <li><a href="#read-and-alignment-stats">Read and alignment stats</a></li>
-      <li><a href="#create-symbolic-links-for-viewing-bam-files-in-igv">Create symbolic links for viewing BAM files in IGV</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#read-quantification">Read quantification</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#read-counting-with-summarizeoverlaps-in-parallel-mode-using-multiple-cores">Read counting with <code>summarizeOverlaps</code> in parallel mode using multiple cores</a></li>
-      <li><a href="#sample-wise-correlation-analysis">Sample-wise correlation analysis</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#analysis-of-degs">Analysis of DEGs</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#run-edger">Run <code>edgeR</code></a></li>
-      <li><a href="#plot-deg-results">Plot DEG results</a></li>
-      <li><a href="#venn-diagrams-of-deg-sets">Venn diagrams of DEG sets</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#go-term-enrichment-analysis">GO term enrichment analysis</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#obtain-gene-to-go-mappings">Obtain gene-to-GO mappings</a></li>
-      <li><a href="#batch-go-term-enrichment-analysis">Batch GO term enrichment analysis</a></li>
-      <li><a href="#plot-batch-go-term-results">Plot batch GO term results</a></li>
-      </ul>
-</li>
-      <li><a href="#clustering-and-heat-maps">Clustering and heat maps</a></li>
-      <li><a href="#version-information">Version Information</a></li>
-      <li><a href="#funding">Funding</a></li>
-      <li><a href="#references">References</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -728,7 +631,7 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

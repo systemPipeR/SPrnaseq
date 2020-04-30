@@ -23,25 +23,14 @@ template:
 #      index_name: 
        bootswatch: flatly
     ganalytics: UA-158796879-1
-
 navbar:
-  structure:
-    left:
-    - home
-    right: 
-    - github
-  components:
-    home:
-      icon: fas fa-home fa-lg
+  title: "systemPipeRNAseq"
+  left:
+    - icon: fas fa-home fa-lg
       href: index.html
-    articles:
-      text: Workflow
-      icon: fas fa-book
+    - text: "Workflow"
       href: articles/systemPipeRNAseq.html
-    reference:
-    - title: "systemPipeR"
-      desc: >
-        Find here help...
-    github:
-      icon: fa-github fa-lg
-      href: https://github.com/tgirke/systemPipeR
+      icon: fas fa-book
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/systemPipeR/systemPipeRNAseq
