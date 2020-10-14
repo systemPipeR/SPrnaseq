@@ -1,18 +1,24 @@
 ---
-title: "RNA-Seq Workflow Template"
-author: 'Author: Daniela Cassol (danielac@ucr.edu) and Thomas Girke (thomas.girke@ucr.edu)'
-date: 
+title: "RNA-Seq Workflow Template" 
+author: "Author: Daniela Cassol (danielac@ucr.edu) and Thomas Girke (thomas.girke@ucr.edu)"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
 output:
-  BiocStyle::html_document: default
-  md_document: default
-fontsize: 14pt
+  BiocStyle::html_document:
+    toc_float: true
+    code_folding: show
 package: systemPipeR
-bibliography: bibtex.bib
 vignette: |
-  %\VignetteIndexEntry{RNA-Seq Workflow Template}
+  %\VignetteIndexEntry{WF: RNA-Seq Workflow Template}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
+fontsize: 14pt
+bibliography: bibtex.bib
 ---
+
+<!--
+Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('systemPipeRNAseq.Rmd', tangle=TRUE)"; Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::pdf_document'))"
+# Rmarkdown/HTML setting
+-->
 
 ```{css, echo=FALSE}
 pre code {
@@ -23,11 +29,6 @@ word-wrap: initial !important;
 }
 ```
 
-<!--
-- Compile from command-line
-Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('systemPipeRNAseq.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R systemPipeRNAseq.knit.md 12; Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::pdf_document'))"
--->
-
 ```{r style, echo = FALSE, results = 'asis'}
 BiocStyle::markdown()
 options(width=60, max.print=1000)
@@ -37,7 +38,7 @@ knitr::opts_chunk$set(
     tidy.opts=list(width.cutoff=60), tidy=TRUE)
 ```
 
-```{r setup, echo=FALSE, messages=FALSE, warnings=FALSE}
+```{r setup_libraries, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
     library(systemPipeR)
     library(BiocParallel)
@@ -64,61 +65,42 @@ Typically, the user wants to record here the sources and versions of the
 reference genome sequence along with the corresponding annotations. In
 the provided sample data set all data inputs are stored in a `data`
 subdirectory and all results will be written to a separate `results` directory,
-while the `systemPipeRNAseq.Rmd` script and the `targets` file are expected to be located in the parent directory. The R session is expected to run from this parent directory.
+while the `systemPipeRNAseq.Rmd` script and the `targets` file are expected to be 
+located in the parent directory. The R session is expected to run from this parent directory.
 
-To run this sample report, mini sample FASTQ and reference genome files
-can be downloaded from
-[here](http://biocluster.ucr.edu/~tgirke/projects/systemPipeR_test_data.zip).
+[*systemPipeRdata*](http://bioconductor.org/packages/release/data/experiment/html/systemPipeRdata.html) package is a helper package to generate a fully populated [*systemPipeR*](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)
+workflow environment in the current working directory with a single command. 
+All the instruction for generating the workflow are provide in the *systemPipeRdata* vignette [here](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRdata.html#1_Introduction). 
+
+The mini sample FASTQ files used by this report as well as the associated reference genome files
+can be loaded via the *systemPipeRdata* package. 
 The chosen data set [SRP010938](http://www.ncbi.nlm.nih.gov/sra/?term=SRP010938)
 contains 18 paired-end (PE) read sets from *Arabidposis thaliana*
 [@Howard2013-fq]. To minimize processing time during testing, each FASTQ
 file has been subsetted to 90,000-100,000 randomly sampled PE reads that
 map to the first 100,000 nucleotides of each chromosome of the *A.
 thalina* genome. The corresponding reference genome sequence (FASTA) and
-its GFF annotation files (provided in the same download) have been
-truncated accordingly. This way the entire test sample data set is less
-than 200MB in storage space. A PE read set has been chosen for this test
-data set for flexibility, because it can be used for testing both types
+its GFF annotation files have been truncated accordingly. This way the entire 
+test sample data set is less than 200MB in storage space. A PE read set has been
+chosen for this test data set for flexibility, because it can be used for testing both types
 of analysis routines requiring either SE (single end) reads or PE reads.
-
-Instructions for loading the demo data available for NGS workflow templates 
-into the user's current working directory can be found here. At the moment, the package includes
-workflow templates for RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq. Templates for
-additional NGS applications will be provided in the future.
-
-Alternatively, this can be done from the command-line as find here. 
-
-Now open the R markdown script `systemPipeRNAseq.Rmd`in your R IDE (_e.g._
-vim-r or RStudio) and run the workflow as outlined below. If you work under
-Vim-R-Tmux, the following command sequence will connect the user in an
-interactive session with a node on the cluster [TODO: fix, point to the main vignette]. 
-The code of the `Rmd`script can then be sent from Vim on the login (head) node to an open R session running
-on the corresponding computer node. This is important since Tmux sessions
-should not be run on the computer nodes. 
-
-Now check whether your R session is running on a computer node of the cluster and not on a head node.
-
-```{r r_environment, eval=FALSE}
-system("hostname") # should return name of a compute node starting with i or c 
-getwd() # checks current working directory of R session
-dir() # returns content of current working directory
-```
 
 ## Required packages and resources
 
 The `systemPipeR` package needs to be loaded to perform the analysis steps shown in
 this report [@H_Backman2016-bt].
 
-```{r load_systempiper, eval=TRUE,  messages=FALSE}
+```{r load_systempiper, eval=TRUE, message=FALSE}
 library(systemPipeR)
 ```
 
-If applicable load custom functions not provided by `systemPipeR` package.
-
 To apply workflows to custom data, the user needs to modify the _`targets`_ file and if
-necessary update the corresponding _`.cwl`_ and _`.yml`_ files. A collection of pre-generated _`.cwl`_ and _`.yml`_ files are provided in the _`param/cwl`_ subdirectory of each workflow template. They
-are also viewable in the GitHub repository of _`systemPipeRdata`_ ([see
-here](https://github.com/tgirke/systemPipeRdata/tree/master/inst/extdata/param)).
+necessary update the corresponding parameter (_`.cwl`_ and _`.yml`_) files. 
+A collection of pre-generated _`.cwl`_ and _`.yml`_ files are provided in the _`param/cwl`_ subdirectory 
+of each workflow template. They are also viewable in the GitHub repository of _`systemPipeRdata`_ ([see
+here](https://github.com/tgirke/systemPipeRdata/tree/master/inst/extdata/param/cwl)).
+For more information of the structure of the *targets* file, please consult the documentation 
+[here](http://www.bioconductor.org/packages/release/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#25_structure_of_targets_file). More details about the new parameter files from systemPipeR can be found [here](http://www.bioconductor.org/packages/release/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#26_structure_of_the_new_param_files_and_construct_sysargs2_container). 
 
 ## Experiment definition provided by `targets` file
 
@@ -126,7 +108,7 @@ The `targets` file defines all FASTQ files and sample
 comparisons of the analysis workflow.
 
 ```{r load_targets, eval=TRUE}
-targetspath <- system.file("extdata", "targets.txt", package="systemPipeR")
+targetspath <- system.file("extdata", "targetsPE.txt", package="systemPipeR")
 targets <- read.delim(targetspath, comment.char = "#")[,1:4]
 targets
 ```
@@ -150,9 +132,9 @@ trimmed FASTQ files.
 Construct _`SYSargs2`_ object from _`cwl`_ and _`yml`_ param and _`targets`_ files.
 
 ```{r construct_SYSargs2_trim-se, eval=FALSE}
-dir_path <- system.file("extdata/cwl/preprocessReads/trim-se", package="systemPipeR")
-trim <- loadWorkflow(targets=targetspath, wf_file="trim-se.cwl", input_file="trim-se.yml", dir_path=dir_path)
-trim <- renderWF(trim, inputvars=c(FileName="_FASTQ_PATH1_", SampleName="_SampleName_"))
+dir_path <- system.file("extdata/cwl/preprocessReads/trim-pe", package="systemPipeR")
+trim <- loadWorkflow(targets=targetspath, wf_file="trim-pe.cwl", input_file="trim-pe.yml", dir_path=dir_path)
+trim <- renderWF(trim, inputvars=c(FileName1="_FASTQ_PATH1_", FileName2="_FASTQ_PATH2_", SampleName="_SampleName_"))
 trim
 output(trim)[1:2]
 ```
@@ -160,8 +142,8 @@ output(trim)[1:2]
 ```{r preprocessing, eval=FALSE}
 preprocessReads(args=trim, Fct="trimLRPatterns(Rpattern='GCCCGGGTAA', 
                 subject=fq)", batchsize=100000, overwrite=TRUE, compress=TRUE)
-writeTargetsout(x=trim, file="targets_trimPE.txt", step = 1, 
-                new_col = "FileName1", new_col_output_index = 1, overwrite = TRUE)
+writeTargetsout(x=trim, file="targets_trim.txt", step = 1, 
+                new_col = c("FileName1", "FileName2"), new_col_output_index = c(1, 2), overwrite = TRUE)
 ```
 
 ## FASTQ quality report
@@ -184,55 +166,6 @@ dev.off()
 <div align="center">Figure 1: FASTQ quality report for 18 samples</div></br>
 
 # Alignments
-
-## Read mapping with `Bowtie2/Tophat2` 
-
-The NGS reads of this project will be aligned against the reference
-genome sequence using `Bowtie2/TopHat2` [@Kim2013-vg; @Langmead2012-bs] in both 
-interactive job submissions and batch submissions to queuing systems of clusters 
-using the _`systemPipeR's`_ new CWL command-line interface.
-
-Build _`Bowtie2`_ index.
-
-```{r bowtie_index, eval=FALSE}
-dir_path <- system.file("extdata/cwl/bowtie2/bowtie2-idx", package="systemPipeR")
-idx <- loadWorkflow(targets=NULL, wf_file="bowtie2-index.cwl", input_file="bowtie2-index.yml", dir_path=dir_path)
-idx <- renderWF(idx)
-idx
-cmdlist(idx)
-
-## Run in single machine
-runCommandline(idx, make_bam = FALSE)
-```
-
-The parameter settings of the aligner are defined in the `tophat2-mapping-pe.cwl` 
-and `tophat2-mapping-pe.yml` files. The following shows how to construct the 
-corresponding *SYSargs2* object, here *args*.
-
-```{r tophat2-se, eval=FALSE}
-dir_path <- system.file("extdata/cwl/tophat2/tophat2-se", package="systemPipeR")
-args <- loadWorkflow(targets = targetspath, wf_file = "tophat2-mapping-se.cwl", 
-    input_file = "tophat2-mapping-se.yml", dir_path = dir_path)
-args <- renderWF(args, inputvars = c(FileName = "_FASTQ_PATH1_", SampleName = "_SampleName_"))
-args
-cmdlist(args)[1:2]
-output(args)[1:2]
-## Run in single machine
-args <- runCommandline(args, make_bam = TRUE)
-```
-
-Submission of alignment jobs to compute cluster, here using 72 CPU cores
-(18 `qsub` processes each with 4 CPU cores).
-
-```{r tophat_se_run, eval=FALSE}
-## Run on the cluster
-moduleload(modules(args))
-resources <- list(walltime=120, ntasks=1, ncpus=4, memory=1024) 
-reg <- clusterRun(args, FUN = runCommandline, more.args = list(args=args, make_bam=TRUE, dir=FALSE), 
-                  conffile = ".batchtools.conf.R", template = "batchtools.slurm.tmpl", 
-                  Njobs=18, runid="01", resourceList=resources)
-waitForJobs(reg=reg)
-```
 
 ## Read mapping with `HISAT2`
 
@@ -257,18 +190,57 @@ The parameter settings of the aligner are defined in the `hisat2-mapping-se.cwl`
 and `hisat2-mapping-se.yml` files. The following shows how to construct the 
 corresponding *SYSargs2* object, here *args*.
 
-```{r hisat_SYSargs2_object, eval=FALSE}
-dir_path <- system.file("extdata/cwl/hisat2/hisat2-se", package="systemPipeR")
-args <- loadWorkflow(targets=targetspath, wf_file="hisat2-mapping-se.cwl", 
-                     input_file="hisat2-mapping-se.yml", dir_path=dir_path)
-args <- renderWF(args, inputvars=c(FileName="_FASTQ_PATH1_", SampleName="_SampleName_"))
+```{r hisat_SYSargs2_object, eval=TRUE}
+dir_path <- system.file("extdata/cwl/hisat2/hisat2-pe", package="systemPipeR")
+args <- loadWorkflow(targets=targetspath, wf_file="hisat2-mapping-pe.cwl", 
+                     input_file="hisat2-mapping-pe.yml", dir_path=dir_path)
+args <- renderWF(args, inputvars=c(FileName1="_FASTQ_PATH1_", FileName2="_FASTQ_PATH2_", SampleName="_SampleName_"))
 args
 cmdlist(args)[1:2]
 output(args)[1:2]
+```
 
-## Runc single Machine
+### Interactive job submissions in a single machine
+
+To simplify the short read alignment execution for the user, the command-line 
+can be run with the *`runCommandline`* function.
+The execution will be on a single machine without submitting to a queuing system 
+of a computer cluster. This way, the input FASTQ files will be processed sequentially. 
+By default *`runCommandline`* auto detects SAM file outputs and converts them 
+to sorted and indexed BAM files, using internally the `Rsamtools` package 
+[@Rsamtools]. Besides, *`runCommandline`* allows the user to create a dedicated
+results folder for each workflow and a sub-folder for each sample 
+defined in the *targets* file. This includes all the output and log files for each 
+step. When these options are used, the output location will be updated by default 
+and can be assigned to the same object.
+
+```{r hisat_SYSargs2_singleM, eval=FALSE}
+## Run single Machine
 args <- runCommandline(args)
 ```
+
+### Parallelization on clusters
+
+Alternatively, the computation can be greatly accelerated by processing many files 
+in parallel using several compute nodes of a cluster, where a scheduling/queuing
+system is used for load balancing. For this the *`clusterRun`* function submits 
+the computing requests to the scheduler using the run specifications
+defined by *`runCommandline`*. 
+
+To avoid over-subscription of CPU cores on the compute nodes, the value from 
+_`yamlinput(args)['thread']`_ is passed on to the submission command, here _`ncpus`_ 
+in the _`resources`_ list object. The number of independent parallel cluster 
+processes is defined under the _`Njobs`_ argument. The following example will run 
+18 processes in parallel using for each 4 CPU cores. If the resources available
+on a cluster allow running all 18 processes at the same time then the shown sample 
+submission will utilize in total 72 CPU cores. Note, *`clusterRun`* can be used
+with most queueing systems as it is based on utilities from the _`batchtools`_ 
+package which supports the use of template files (_`*.tmpl`_) for defining the 
+run parameters of different schedulers. To run the following code, one needs to 
+have both a conf file (see _`.batchtools.conf.R`_ samples [here](https://mllg.github.io/batchtools/)) 
+and a template file (see _`*.tmpl`_ samples [here](https://github.com/mllg/batchtools/tree/master/inst/templates)) 
+for the queueing available on a system. The following example uses the sample 
+conf and template files for the Slurm scheduler provided by this package.  
 
 ```{r hisat2_clusterRun, eval=FALSE}
 library(batchtools)
@@ -313,7 +285,7 @@ with a path specified under `urlfile` in the `results` directory.
 
 ```{r bam_urls, eval=FALSE}
 symLink2bam(sysargs=args, htmldir=c("~/.html/", "somedir/"), 
-            urlbase="http://biocluster.ucr.edu/~tgirke/", 
+            urlbase="http://cluster.hpcc.ucr.edu/~tgirke/", 
 	        urlfile="./results/IGVurl.txt")
 ```
 
@@ -403,8 +375,8 @@ comparisons used by this analysis are defined in the header lines of the
 ```{r run_edger, eval=FALSE}
 library(edgeR)
 countDF <- read.delim("results/countDFeByg.xls", row.names=1, check.names=FALSE) 
-targets <- read.delim("targets.txt", comment="#")
-cmp <- readComp(file="targets.txt", format="matrix", delim="-")
+targets <- read.delim("targetsPE.txt", comment="#")
+cmp <- readComp(file="targetsPE.txt", format="matrix", delim="-")
 edgeDF <- run_edgeR(countDF=countDF, targets=targets, cmp=cmp[[1]], independent=FALSE, mdsplot="")
 ```
 
