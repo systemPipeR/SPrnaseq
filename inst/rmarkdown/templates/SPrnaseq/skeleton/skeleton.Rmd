@@ -16,7 +16,7 @@ bibliography: bibtex.bib
 ---
 
 <!--
-Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('systemPipeRNAseq.Rmd', tangle=TRUE)"; Rscript -e "rmarkdown::render('systemPipeRNAseq.Rmd', c('BiocStyle::pdf_document'))"
+Rscript -e "rmarkdown::render('SPrnaseq.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('SPrnaseq.Rmd', tangle=TRUE)"; Rscript -e "rmarkdown::render('SPrnaseq.Rmd', c('BiocStyle::pdf_document'))"
 -->
 
 ```{css, echo=FALSE}
@@ -64,7 +64,7 @@ Typically, the user wants to record here the sources and versions of the
 reference genome sequence along with the corresponding annotations. In
 the provided sample data set all data inputs are stored in a `data`
 subdirectory and all results will be written to a separate `results` directory,
-while the `systemPipeRNAseq.Rmd` script and the `targets` file are expected to be 
+while the `SPrnaseq.Rmd` script and the `targets` file are expected to be 
 located in the parent directory. The R session is expected to run from this parent directory.
 
 [*systemPipeRdata*](http://bioconductor.org/packages/release/data/experiment/html/systemPipeRdata.html) package is a helper package to generate a fully populated [*systemPipeR*](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)

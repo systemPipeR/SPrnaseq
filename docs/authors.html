@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Citation and Authors • systemPipeRNAseq</title>
+<title>Citation and Authors • SPrnaseq</title>
 
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -37,12 +37,6 @@
 <script src="pkgdown.js"></script>
 
 
-<!-- docsearch -->
-<script src="docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
-<link href="docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-
 
 
 <meta property="og:title" content="Citation and Authors" />
@@ -61,13 +55,13 @@
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158796879-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CCMXLYXWYV"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-158796879-1');
+  gtag('config', 'G-CCMXLYXWYV');
 </script>
 
 
@@ -86,8 +80,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">systemPipeRNAseq</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <a class="navbar-link" href="index.html">SPrnaseq</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.1</span>
       </span>
     </div>
 
@@ -100,27 +94,20 @@
   </a>
 </li>
 <li>
-  <a href="articles/systemPipeRNAseq.html">
-    <span class="fas fa-book"></span>
-     
-    Workflow
-  </a>
+  <a href="articles/SPrnaseq.html">Get started</a>
+</li>
+<li>
+  <a href="reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/systemPipeR/systemPipeRNAseq">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/systemPipeR/SPrnaseq/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
-      
-      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-        </div>
-      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -134,25 +121,21 @@
   <div class="contents col-md-9">
     <div class="page-header">
       <h1>Citation</h1>
-      <small class="dont-index">Source: <a href='https://github.com/systemPipeR/systemPipeRNAseq/blob/master/inst/CITATION'><code>inst/CITATION</code></a></small>
+      <small class="dont-index">Source: <a href='https://github.com/systemPipeR/SPrnaseq/blob/master/inst/CITATION'><code>inst/CITATION</code></a></small>
     </div>
 
-    <p>Backman TWH, Girke T (2016).
-&ldquo;systemPipeR: NGS workflow and report generation environment.&rdquo;
-<em>BMC Bioinformatics</em>, <b>17</b>(1).
-doi: <a href="https://doi.org/10.1186/s12859-016-1241-0">10.1186/s12859-016-1241-0</a>, <a href="https://doi.org/10.1186/s12859-016-1241-0">https://doi.org/10.1186/s12859-016-1241-0</a>. 
-</p>
-    <pre>@Article{Backman_2016,
-  doi = {10.1186/s12859-016-1241-0},
-  url = {https://doi.org/10.1186/s12859-016-1241-0},
+    <p>Backman TWH, Girke T (2016) systemPipeR: NGS workflow and report generation environment. BMC Bioinformatics 17 (1), doi: 10.1186/s12859-016-1241-0.</p>
+    <pre>@Article{,
+  title = {systemPipeR: NGS workflow and report generation environment},
+  author = {Tyler W. H. Backman and Thomas Girke},
   year = {2016},
   month = {sep},
   publisher = {Springer Science and Business Media {LLC}},
+  journal = {BMC Bioinformatics},
+  doi = {10.1186/s12859-016-1241-0},
+  url = {https://doi.org/10.1186/s12859-016-1241-0},
   volume = {17},
   number = {1},
-  author = {Tyler W. H. Backman and Thomas Girke},
-  title = {{systemPipeR}: {NGS} workflow and report generation environment},
-  journal = {{BMC} Bioinformatics},
 }</pre>
 
     <div class="page-header">
@@ -189,23 +172,6 @@ doi: <a href="https://doi.org/10.1186/s12859-016-1241-0">10.1186/s12859-016-1241
    </div>
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
-<script>
-  docsearch({
-    
-    
-    apiKey: '',
-    indexName: '',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-
 
 
   </body>

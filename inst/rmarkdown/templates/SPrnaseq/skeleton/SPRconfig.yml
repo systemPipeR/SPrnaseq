@@ -15,4 +15,4 @@ targets:
   path: targets.txt
 Rmd:
   class: File
-  path: systemPipeRNAseq.Rmd
+  path: SPrnaseq.Rmd

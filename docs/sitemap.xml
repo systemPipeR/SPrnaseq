@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://girke.bioinformatics.ucr.edu/systemPipeR//index.html</loc>
+    <loc>https://systempipe.org/SPrnaseq//index.html</loc>
   </url>
   <url>
-    <loc>http://girke.bioinformatics.ucr.edu/systemPipeR//articles/systemPipeRNAseq.html</loc>
+    <loc>https://systempipe.org/SPrnaseq//articles/SPrnaseq.html</loc>
   </url>
 </urlset>

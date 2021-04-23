@@ -1,17 +1,35 @@
-Package: systemPipeRNAseq
+Package: SPrnaseq
 Title: RNA-Seq Workflow
-Version: 0.9.0
-Date: 2020-01-10
+Version: 0.99.1
+Date: 2021-04-23
 Authors@R: c(
-    person(given = "Daniela", family = "Cassol", role = c("aut", "cre"), email="danielac@ucr.edu"), 
+    person(given = "Daniela", family = "Cassol", role = c("aut", "cre"), email="danicassol@gmail.com"), 
     person(given = "Thomas", family = "Girke", role = c("aut")))
 Description: This package provides a pre-configured workflow and reporting template for RNA-seq analysis.
-biocViews: Genetics, Infrastructure, DataImport, Sequencing, RNASeq, GeneExpression, Coverage, GeneSetEnrichment, Alignment, QualityControl
-Imports: systemPipeR (>= 1.21.0), systemPipeRdata (>= 1.15.0)
-Suggests: BiocStyle, knitr, rmarkdown
-VignetteBuilder: knitr
-SystemRequirements: systemPipeRNAseq can be used to run external 
+biocViews: Genetics, Infrastructure, DataImport, Sequencing, RNASeq, RiboSeq, ChIPSeq, MethylSeq, SNP, GeneExpression, Coverage, GeneSetEnrichment, Alignment, QualityControl, ImmunoOncology
+Suggests: 
+    BiocStyle,
+    knitr,
+    rmarkdown, 
+    systemPipeR, 
+    testthat, 
+    BiocParallel,
+    Biostrings,
+    GenomicAlignments,
+    GenomicRanges,
+    Rsamtools,
+    ShortRead,
+    ape,
+    batchtools,
+    ggplot2
+VignetteBuilder: 
+    knitr
+SystemRequirements: SPrnaseq can be used to run external 
         command-line software (e.g. short read aligners), but the 
         corresponding tool needs to be installed on a system.  
 License: Artistic-2.0
-URL: http://girke.bioinformatics.ucr.edu/systemPipeR/, https://github.com/systemPipeR/systemPipeRNAseq
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+URL: https://github.com/systemPipeR/SPrnaseq, https://systempipe.org/

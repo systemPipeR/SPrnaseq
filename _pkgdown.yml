@@ -1,36 +1,20 @@
-title: systemPipeRNAseq
-url: http://girke.bioinformatics.ucr.edu/systemPipeR/
-
+title: SPrnaseq
+url: https://systempipe.org/SPrnaseq/
 authors:
    Daniela Cassol:
      href: https://www.dcassol.com/
    Thomas Girke:
      href: http://girke.bioinformatics.ucr.edu/
-
 home:
   links:
-  - text: Download from Bioconductor
-    href: http://www.bioconductor.org/packages/release/bioc/html/systemPipeR.html
-  - text: Ask a question about systemPipeR
-    href: https://support.bioconductor.org/
+  - text: Download from Github
+    href: https://github.com/systemPipeR/SPrnaseq/
   - text: Report a bug
-    href: https://github.com/tgirke/systemPipeR/issues
-
+    href: https://github.com/systemPipeR/SPrnaseq/issues
 template:
   params:
-    docsearch:
-#      api_key: 
-#      index_name: 
-       bootswatch: flatly
-    ganalytics: UA-158796879-1
-navbar:
-  title: "systemPipeRNAseq"
-  left:
-    - icon: fas fa-home fa-lg
-      href: index.html
-    - text: "Workflow"
-      href: articles/systemPipeRNAseq.html
-      icon: fas fa-book
-  right:
-    - icon: fa-github fa-lg
-      href: https://github.com/systemPipeR/systemPipeRNAseq
+    ganalytics: G-CCMXLYXWYV
+    bootswatch: flatly
+#    docsearch:
+#      api_key: API_KEY
+#      index_name: INDEX_NAME

@@ -1,24 +1,9 @@
-# systemPipeRNAseq <img src="https://github.com/tgirke/systemPipeR/raw/gh-pages/images/systemPipeR.png" align="right" height="139" />
+# SPrnaseq <img src="https://raw.githubusercontent.com/systemPipeR/SPrnaseq/master/inst/extdata/SPrnaseq.png" align="right" height="139" />
 
 <!-- badges: start -->
-
-[![platforms](http://www.bioconductor.org/shields/availability/3.10/systemPipeR.svg)](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html#archives)
-[![rank](http://www.bioconductor.org/shields/downloads/devel/systemPipeR.svg)](http://bioconductor.org/packages/stats/bioc/systemPipeR/)
-[![posts](http://www.bioconductor.org/shields/posts/systemPipeR.svg)](https://support.bioconductor.org/t/systempiper/)
-[![Bioc](http://www.bioconductor.org/shields/years-in-bioc/systemPipeR.svg)](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html#since)
-[![build](http://www.bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR/)
-[![updated](http://www.bioconductor.org/shields/lastcommit/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR/)
-[![dependencies](http://www.bioconductor.org/shields/dependencies/devel/systemPipeR.svg)](http://www.bioconductor.org/packages/devel/bioc/html/systemPipeR.html#since)
-
-
-## Software status
-
-| Platforms |  OS  | R CMD check |  
-|:----------------:|:----------------:|:----------------:|
-| GitHub Actions | Multiple | ![R-CMD-check](https://github.com/systemPipeR/systemPipeRNAseq/workflows/R-CMD-check/badge.svg?branch=master) | 
-| Travis CI | Linux | `NA` | 
-| Bioc ([_devel_](http://bioconductor.org/packages/devel/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-devel Build Status](http://bioconductor.org/shields/build/devel/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/systemPipeR) | 
-| Bioc ([_release_](http://bioconductor.org/packages/release/bioc/html/systemPipeR.html)) | Multiple | [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/systemPipeR.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/systemPipeR) | 
+![R-CMD-check](https://github.com/systemPipeR/SPrnaseq/workflows/R-CMD-check/badge.svg)
+[![Lifecycle: stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
 ### Introduction
@@ -41,7 +26,7 @@ To install the package, please use the _`BiocManager::install`_ command:
 ```
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
-BiocManager::install("systemPipeR/systemPipeRNAseq", dependencies=TRUE)
+BiocManager::install("systemPipeR/SPrnaseq", build_vignettes=TRUE, dependencies=TRUE)
 ```
 To obtain the *systemPipeR* and *systemPipeRdata*, please run as follow:
 ```
@@ -53,32 +38,22 @@ BiocManager::install("systemPipeRdata")
 
 #### Usage
 
-Instructions for running _systemPipeR_ are given in its main
-[_vignette_](http://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html) (manual).
-The sample data set used in the vignette are provided by the data package [_systemPipeRdata_](http://www.bioconductor.org/packages/devel/data/experiment/html/systemPipeRdata.html).
-The expected format to define NGS samples (_e.g._ FASTQ files) and their
-labels are given in
-[_targets.txt_](https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/targets.txt)
-and
-[_targetsPE.txt_](https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/targetsPE.txt)
-(latter is for PE reads).
-With the latest [Bioconductor Release 3.9](http://www.bioconductor.org/packages/release/bioc/html/systemPipeR.html), 
-we are adopting for this functionality the widely used community standard 
-[Common Workflow Language](https://www.commonwl.org/) (CWL) for describing 
-analysis workflows in a generic and reproducible manner, introducing _`SYSargs2`_
-workflow control class. Using this community standard in _`systemPipeR`_
-has many advantages. For instance, the integration of CWL allows running _`sytemPipeR`_
-workflows from a single specification instance either entirely from within R, from various command-line
-wrappers (e.g., *cwl-runner*) or from other languages (*, e.g.,* Bash or Python).
-The run parameters of command-line software are defined by param files that
-have a simplified YAML name/value structure. Here is a sample param file
-for _Hisat2_:
-[_hisat2.cwl_](https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/cwl/hisat2/hisat2-pe/hisat2-mapping-pe.cwl).
-Templates for setting up custom project reports are provided by [_systemPipeRdata_](https://github.com/tgirke/systemPipeRdata).
-The corresponding PDFs of these report templates are linked here:
-[systemPipeRNAseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRNAseq.html),
-[systemPipeRIBOseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRIBOseq.html),
-[systemPipeChIPseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeChIPseq.html)
-and
-[systemPipeVARseq](http://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeVARseq.html).
+To test workflows quickly or design new ones from existing templates, users can
+generate with a single command workflow instances fully populated with sample data 
+and parameter files required for running a chosen workflow.
 
+Load one of the available workflows into your current working directory. 
+The following does this for the _`systemPipeR/SPrnaseq`_ workflow template. 
+The name of the resulting workflow directory can be specified under the _`mydirname`_ argument. The default _`NULL`_  uses the name of the chosen workflow. An error is issued if a directory of the same name and path exists already. 
+
+```r
+library("systemPipeRdata") 
+genWorkenvir(workflow="systemPipeR/SPrnaseq", mydirname=NULL)
+setwd("SPrnaseq")
+```
+
+On Linux and OS X systems the same can be achieved from the command-line of a terminal with the following commands.
+
+```bash
+$ Rscript -e "systemPipeRdata::genWorkenvir(workflow='systemPipeR/SPrnaseq', mydirname=NULL)"
+```
