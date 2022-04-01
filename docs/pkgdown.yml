@@ -1,10 +1,10 @@
 pandoc: '2.13'
-pkgdown: 1.6.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   SPrnaseq: SPrnaseq.html
-last_built: 2021-08-02T07:17Z
+last_built: 2022-04-01T03:42Z
 urls:
-  reference: https://systempipe.org/SPrnaseq//reference
-  article: https://systempipe.org/SPrnaseq//articles
+  reference: https://systempipe.org/SPrnaseq/reference
+  article: https://systempipe.org/SPrnaseq/articles
 

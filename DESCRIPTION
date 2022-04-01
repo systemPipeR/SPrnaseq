@@ -1,7 +1,7 @@
 Package: SPrnaseq
 Title: RNA-Seq Workflow
-Version: 0.1.1
-Date: 2021-10-22
+Version: 0.1.2
+Date: 2022-03-31
 Authors@R: c(
     person(given = "Daniela", family = "Cassol", role = c("aut", "cre"), email="danicassol@gmail.com"), 
     person(given = "Thomas", family = "Girke", role = c("aut")))
@@ -31,5 +31,5 @@ License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 URL: https://github.com/systemPipeR/SPrnaseq, https://systempipe.org/
