@@ -1,7 +1,7 @@
 Package: SPrnaseq
 Title: RNA-Seq Workflow
-Version: 0.1.2
-Date: 2022-03-31
+Version: 0.1.3
+Date: 2022-04-10
 Authors@R: c(
     person(given = "Daniela", family = "Cassol", role = c("aut", "cre"), email="danicassol@gmail.com"), 
     person(given = "Thomas", family = "Girke", role = c("aut")))
