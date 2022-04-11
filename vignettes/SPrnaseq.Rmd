@@ -681,7 +681,7 @@ The resources can be appended when the step is generated, or it is possible to
 add these resources later, as the following example using the `addResources` 
 function:
 
-```{r runWF_cluster, eval=FALSE, spr=FALSE}
+```{r runWF_cluster, eval=FALSE}
 resources <- list(conffile=".batchtools.conf.R",
                   template="batchtools.slurm.tmpl", 
                   Njobs=18, 
