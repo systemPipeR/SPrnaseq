@@ -6,42 +6,36 @@ on:
   pull_request:
     branches:
       - master
+  repository_dispatch:
+    types: [rmd-updated]
 
-name: R-CMD-check
+name: R-CMD-check  and Triggered Rmd templates files update
 
 jobs:
   R-CMD-check:
     if: "contains(toJSON(github.event.commits.*.message), 'build_check')"
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
     strategy:
       fail-fast: false
       matrix:
         config:
-         - {os: ubuntu-20.04, r: '4.1.2', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-
+          - { os: ubuntu-latest, r: '4.1', bioc: '3.14', cont: "bioconductor/bioconductor_docker:RELEASE_3_14", rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-       
     steps:
       - uses: actions/checkout@v2
-
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
-
       - uses: r-lib/actions/setup-pandoc@master
-
       - name: Query dependencies
         run: |
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
-
       - name: Cache R packages
         if: runner.os != 'Windows'
         uses: actions/cache@v1
@@ -49,7 +43,6 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-
-     
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
@@ -57,14 +50,32 @@ jobs:
         run: |
           sudo apt-get install libcurl4-openssl-dev
           sudo apt-get install libv8-dev
-
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
+          remotes::install_cran("rcmdcheck") 
+          install.packages(c("BiocManager", "knitcitations"))
+          BiocManager::install("Bioconductor/BiocStyle")
           BiocManager::install("systemPipeR/SPrnaseq")
+          BiocManager::install("dcassol/SPRthis")
         shell: Rscript {0}
 
+      - name: pull new/edit Rmd
+        uses: actions/checkout@v2
+      - name: Update hash
+        run: |
+          bash .github/bash/update_rmd.sh https://github.com/systemPipeR/systemPipeRdata.git vignettes/
+      - name: Update github
+        run: |
+          git config --local user.name "dcassol"
+          git config --local user.email "danicassol@gmail.com"
+          git add -A
+          git commit -m "Bot update rmd description files" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
