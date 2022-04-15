@@ -99,11 +99,11 @@
 <p>To test workflows quickly or design new ones from existing templates, users can generate with a single command workflow instances fully populated with sample data and parameter files required for running a chosen workflow.</p>
 <p>Load one of the available workflows into your current working directory. The following does this for the <em><code>systemPipeR/SPrnaseq</code></em> workflow template. The name of the resulting workflow directory can be specified under the <em><code>mydirname</code></em> argument. The default <em><code>NULL</code></em> uses the name of the chosen workflow. An error is issued if a directory of the same name and path exists already.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/tgirke/systemPipeRdata" class="external-link">"systemPipeRdata"</a></span><span class="op">)</span> 
-<span class="fu"><a href="https://rdrr.io/pkg/systemPipeRdata/man/genWorkenvir.html" class="external-link">genWorkenvir</a></span><span class="op">(</span>workflow<span class="op">=</span><span class="st">"systemPipeR/SPrnaseq"</span>, mydirname<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"systemPipeRdata"</span><span class="op">)</span> 
+<span class="fu">genWorkenvir</span><span class="op">(</span>workflow<span class="op">=</span><span class="st">"systemPipeR/SPrnaseq"</span>, mydirname<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">"SPrnaseq"</span><span class="op">)</span></code></pre></div>
 <p>On Linux and OS X systems the same can be achieved from the command-line of a terminal with the following commands.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> Rscript <span class="at">-e</span> <span class="st">"systemPipeRdata::genWorkenvir(workflow='systemPipeR/SPrnaseq', mydirname=NULL)"</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a>$ <span class="ex">Rscript</span> -e <span class="st">"systemPipeRdata::genWorkenvir(workflow='systemPipeR/SPrnaseq', mydirname=NULL)"</span></span></code></pre></div>
 </div>
 </div>
 </div>
