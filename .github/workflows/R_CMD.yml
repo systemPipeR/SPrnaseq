@@ -9,7 +9,7 @@ on:
   repository_dispatch:
     types: [rmd-updated]
 
-name: R-CMD-check  and Triggered Rmd templates files update
+name: R-CMD-check and Triggered Rmd templates files update
 
 jobs:
   R-CMD-check:
@@ -69,7 +69,7 @@ jobs:
           git config --local user.name "dcassol"
           git config --local user.email "danicassol@gmail.com"
           git add -A
-          git commit -m "Bot update rmd description files" -a
+          git commit -m "Bot update RMD/HTML files" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
