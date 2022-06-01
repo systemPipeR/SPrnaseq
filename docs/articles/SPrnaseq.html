@@ -75,7 +75,7 @@
       <h1 data-toc-skip>RNA-Seq Workflow Template</h1>
                         <h4 data-toc-skip class="author">Author: Daniela Cassol (<a href="mailto:danielac@ucr.edu" class="email">danielac@ucr.edu</a>) and Thomas Girke (<a href="mailto:thomas.girke@ucr.edu" class="email">thomas.girke@ucr.edu</a>)</h4>
             
-            <h4 data-toc-skip class="date">Last update: 28 April, 2022</h4>
+            <h4 data-toc-skip class="date">Last update: 01 June, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/systemPipeR/SPrnaseq/blob/HEAD/vignettes/SPrnaseq.Rmd" class="external-link"><code>vignettes/SPrnaseq.Rmd</code></a></small>
       <div class="hidden name"><code>SPrnaseq.Rmd</code></div>
@@ -220,13 +220,13 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="section level4">
 <h4 id="fastq-quality-report">FASTQ quality report<a class="anchor" aria-label="anchor" href="#fastq-quality-report"></a>
 </h4>
-<p>The following <code>seeFastq</code> and <code>seeFastqPlot</code> functions generate and plot a series of useful quality statistics for a set of FASTQ files, including per cycle quality box plots, base proportions, base-level quality trends, relative k-mer diversity, length, and occurrence distribution of reads, number of reads above quality cutoffs and mean quality distribution. The results are written to a PDF file named <code>fastqReport.pdf</code>.</p>
+<p>The following <code>seeFastq</code> and <code>seeFastqPlot</code> functions generate and plot a series of useful quality statistics for a set of FASTQ files, including per cycle quality box plots, base proportions, base-level quality trends, relative k-mer diversity, length, and occurrence distribution of reads, number of reads above quality cutoffs and mean quality distribution. The results are written to a png file named <code>fastqReport.png</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">appendStep</span><span class="op">(</span><span class="va">sal</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/LineWise-class.html" class="external-link">LineWise</a></span><span class="op">(</span>code <span class="op">=</span> <span class="op">{</span>
     <span class="va">fastq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/SYSargsList-class.html" class="external-link">getColumn</a></span><span class="op">(</span><span class="va">sal</span>, step <span class="op">=</span> <span class="st">"preprocessing"</span>, <span class="st">"targetsWF"</span>,
         column <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
     <span class="va">fqlist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html" class="external-link">seeFastq</a></span><span class="op">(</span>fastq <span class="op">=</span> <span class="va">fastq</span>, batchsize <span class="op">=</span> <span class="fl">10000</span>, klength <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"./results/fastqReport.pdf"</span>, height <span class="op">=</span> <span class="fl">18</span>, width <span class="op">=</span> <span class="fl">4</span> <span class="op">*</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"./results/fastqReport.png"</span>, height <span class="op">=</span> <span class="fl">162</span>, width <span class="op">=</span> <span class="fl">288</span> <span class="op">*</span>
         <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">fqlist</span><span class="op">)</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/seeFastq.html" class="external-link">seeFastqPlot</a></span><span class="op">(</span><span class="va">fqlist</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
@@ -354,7 +354,7 @@ Figure 1: FASTQ quality report for 18 samples
 <div class="section level4">
 <h4 id="sample-wise-correlation-analysis">Sample-wise correlation analysis<a class="anchor" aria-label="anchor" href="#sample-wise-correlation-analysis"></a>
 </h4>
-<p>The following computes the sample-wise Spearman correlation coefficients from the <code>rlog</code> transformed expression values generated with the <code>DESeq2</code> package. After transformation to a distance matrix, hierarchical clustering is performed with the <code>hclust</code> function and the result is plotted as a dendrogram (also see file <code>sample_tree.pdf</code>).</p>
+<p>The following computes the sample-wise Spearman correlation coefficients from the <code>rlog</code> transformed expression values generated with the <code>DESeq2</code> package. After transformation to a distance matrix, hierarchical clustering is performed with the <code>hclust</code> function and the result is plotted as a dendrogram (also see file <code>sample_tree.png</code>).</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">appendStep</span><span class="op">(</span><span class="va">sal</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/LineWise-class.html" class="external-link">LineWise</a></span><span class="op">(</span>code <span class="op">=</span> <span class="op">{</span>
     <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">DESeq2</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -364,7 +364,7 @@ Figure 1: FASTQ quality report for 18 samples
     <span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSet</span><span class="op">(</span><span class="va">se</span>, design <span class="op">=</span> <span class="op">~</span><span class="va">condition</span><span class="op">)</span>
     <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="fu">rlog</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"spearman"</span><span class="op">)</span>
     <span class="va">hc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"results/sample_tree.pdf"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"results/sample_tree.png"</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/ape/man/plot.phylo.html" class="external-link">plot.phylo</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html" class="external-link">as.phylo</a></span><span class="op">(</span><span class="va">hc</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"p"</span>, edge.col <span class="op">=</span> <span class="st">"blue"</span>, edge.width <span class="op">=</span> <span class="fl">2</span>,
         show.node.label <span class="op">=</span> <span class="cn">TRUE</span>, no.margin <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
@@ -420,7 +420,7 @@ Figure 2: Correlation dendrogram of samples
 <code class="sourceCode R"><span class="fu">appendStep</span><span class="op">(</span><span class="va">sal</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/LineWise-class.html" class="external-link">LineWise</a></span><span class="op">(</span>code <span class="op">=</span> <span class="op">{</span>
     <span class="va">edgeDF</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span><span class="st">"results/edgeRglm_allcomp.xls"</span>, row.names <span class="op">=</span> <span class="fl">1</span>,
         check.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"results/DEGcounts.pdf"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"results/DEGcounts.png"</span><span class="op">)</span>
     <span class="va">DEG_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/filterDEGs.html" class="external-link">filterDEGs</a></span><span class="op">(</span>degDF <span class="op">=</span> <span class="va">edgeDF</span>, filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Fold <span class="op">=</span> <span class="fl">2</span>,
         FDR <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
@@ -436,7 +436,7 @@ Figure 2: Correlation dendrogram of samples
 <code class="sourceCode R"><span class="fu">appendStep</span><span class="op">(</span><span class="va">sal</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/LineWise-class.html" class="external-link">LineWise</a></span><span class="op">(</span>code <span class="op">=</span> <span class="op">{</span>
     <span class="va">vennsetup</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html" class="external-link">overLapper</a></span><span class="op">(</span><span class="va">DEG_list</span><span class="op">$</span><span class="va">Up</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">9</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"vennsets"</span><span class="op">)</span>
     <span class="va">vennsetdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/overLapper.html" class="external-link">overLapper</a></span><span class="op">(</span><span class="va">DEG_list</span><span class="op">$</span><span class="va">Down</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">9</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"vennsets"</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"results/vennplot.pdf"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"results/vennplot.png"</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/vennPlot.html" class="external-link">vennPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">vennsetup</span>, <span class="va">vennsetdown</span><span class="op">)</span>, mymain <span class="op">=</span> <span class="st">""</span>, mysub <span class="op">=</span> <span class="st">""</span>,
         colmode <span class="op">=</span> <span class="fl">2</span>, ccol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
@@ -520,7 +520,7 @@ Figure 2: Correlation dendrogram of samples
     <span class="va">gos</span> <span class="op">&lt;-</span> <span class="va">BatchResultslim</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"M6-V6_up_down"</span>, <span class="va">BatchResultslim</span><span class="op">$</span><span class="va">CLID</span><span class="op">)</span>,
         <span class="op">]</span>
     <span class="va">gos</span> <span class="op">&lt;-</span> <span class="va">BatchResultslim</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"results/GOslimbarplotMF.pdf"</span>, height <span class="op">=</span> <span class="fl">8</span>, width <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"results/GOslimbarplotMF.png"</span>, height <span class="op">=</span> <span class="fl">8</span>, width <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html" class="external-link">goBarplot</a></span><span class="op">(</span><span class="va">gos</span>, gocat <span class="op">=</span> <span class="st">"MF"</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html" class="external-link">goBarplot</a></span><span class="op">(</span><span class="va">gos</span>, gocat <span class="op">=</span> <span class="st">"BP"</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/GOHyperGAll.html" class="external-link">goBarplot</a></span><span class="op">(</span><span class="va">gos</span>, gocat <span class="op">=</span> <span class="st">"CC"</span><span class="op">)</span>
@@ -541,7 +541,7 @@ Figure 5: GO Slim Barplot for MF Ontology
     <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span>
     <span class="va">geneids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">DEG_list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
     <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">assay</span><span class="op">(</span><span class="fu">rlog</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="va">geneids</span>, <span class="op">]</span>
-    <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"results/heatmap1.pdf"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></span><span class="op">(</span><span class="st">"results/heatmap1.png"</span><span class="op">)</span>
     <span class="fu">pheatmap</span><span class="op">(</span><span class="va">y</span>, scale <span class="op">=</span> <span class="st">"row"</span>, clustering_distance_rows <span class="op">=</span> <span class="st">"correlation"</span>,
         clustering_distance_cols <span class="op">=</span> <span class="st">"correlation"</span><span class="op">)</span>
     <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span>
@@ -611,6 +611,77 @@ Figure 6: Heat Map with Hierarchical Clustering Dendrograms of DEGs
 <p><em><code>systemPipeR</code></em> compiles all the workflow execution logs in one central location, making it easier to check any standard output (<code>stdout</code>) or standard error (<code>stderr</code>) for any command-line tools used on the workflow or the R code stdout.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/systemPipeR/man/renderLogs.html" class="external-link">renderLogs</a></span><span class="op">(</span><span class="va">sal</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="session-info">Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
+</h3>
+<p>This is the session information for rendering this report. To access the session information of workflow running, check HTML report of <code>renderLogs</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## R version 4.1.3 (2022-03-10)</span>
+<span class="co">## Platform: x86_64-pc-linux-gnu (64-bit)</span>
+<span class="co">## Running under: Ubuntu 20.04.4 LTS</span>
+<span class="co">## </span>
+<span class="co">## Matrix products: default</span>
+<span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0</span>
+<span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0</span>
+<span class="co">## </span>
+<span class="co">## locale:</span>
+<span class="co">##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C          </span>
+<span class="co">##  [3] LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8    </span>
+<span class="co">##  [5] LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   </span>
+<span class="co">##  [7] LC_PAPER=C.UTF-8       LC_NAME=C             </span>
+<span class="co">##  [9] LC_ADDRESS=C           LC_TELEPHONE=C        </span>
+<span class="co">## [11] LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   </span>
+<span class="co">## </span>
+<span class="co">## attached base packages:</span>
+<span class="co">## [1] stats4    stats     graphics  grDevices utils    </span>
+<span class="co">## [6] datasets  methods   base     </span>
+<span class="co">## </span>
+<span class="co">## other attached packages:</span>
+<span class="co">##  [1] systemPipeR_2.0.8           ShortRead_1.52.0           </span>
+<span class="co">##  [3] GenomicAlignments_1.30.0    SummarizedExperiment_1.24.0</span>
+<span class="co">##  [5] Biobase_2.54.0              MatrixGenerics_1.6.0       </span>
+<span class="co">##  [7] matrixStats_0.62.0          BiocParallel_1.28.3        </span>
+<span class="co">##  [9] Rsamtools_2.10.0            Biostrings_2.62.0          </span>
+<span class="co">## [11] XVector_0.34.0              GenomicRanges_1.46.1       </span>
+<span class="co">## [13] GenomeInfoDb_1.30.1         IRanges_2.28.0             </span>
+<span class="co">## [15] S4Vectors_0.32.4            BiocGenerics_0.40.0        </span>
+<span class="co">## [17] BiocStyle_2.25.0           </span>
+<span class="co">## </span>
+<span class="co">## loaded via a namespace (and not attached):</span>
+<span class="co">##  [1] sass_0.4.1             jsonlite_1.8.0        </span>
+<span class="co">##  [3] bslib_0.3.1            BiocManager_1.30.18   </span>
+<span class="co">##  [5] latticeExtra_0.6-29    GenomeInfoDbData_1.2.7</span>
+<span class="co">##  [7] yaml_2.3.5             pillar_1.7.0          </span>
+<span class="co">##  [9] lattice_0.20-45        glue_1.6.2            </span>
+<span class="co">## [11] digest_0.6.29          RColorBrewer_1.1-3    </span>
+<span class="co">## [13] colorspace_2.0-3       htmltools_0.5.2       </span>
+<span class="co">## [15] Matrix_1.4-0           pkgconfig_2.0.3       </span>
+<span class="co">## [17] bookdown_0.26          zlibbioc_1.40.0       </span>
+<span class="co">## [19] purrr_0.3.4            scales_1.2.0          </span>
+<span class="co">## [21] jpeg_0.1-9             tibble_3.1.7          </span>
+<span class="co">## [23] ggplot2_3.3.6          ellipsis_0.3.2        </span>
+<span class="co">## [25] cachem_1.0.6           cli_3.3.0             </span>
+<span class="co">## [27] magrittr_2.0.3         crayon_1.5.1          </span>
+<span class="co">## [29] memoise_2.0.1          evaluate_0.15         </span>
+<span class="co">## [31] fs_1.5.2               fansi_1.0.3           </span>
+<span class="co">## [33] hwriter_1.3.2.1        textshaping_0.3.6     </span>
+<span class="co">## [35] tools_4.1.3            formatR_1.12          </span>
+<span class="co">## [37] lifecycle_1.0.1        stringr_1.4.0         </span>
+<span class="co">## [39] munsell_0.5.0          DelayedArray_0.20.0   </span>
+<span class="co">## [41] compiler_4.1.3         pkgdown_2.0.3         </span>
+<span class="co">## [43] jquerylib_0.1.4        systemfonts_1.0.4     </span>
+<span class="co">## [45] rlang_1.0.2            grid_4.1.3            </span>
+<span class="co">## [47] RCurl_1.98-1.6         htmlwidgets_1.5.4     </span>
+<span class="co">## [49] bitops_1.0-7           rmarkdown_2.14        </span>
+<span class="co">## [51] codetools_0.2-18       gtable_0.3.0          </span>
+<span class="co">## [53] R6_2.5.1               knitr_1.39            </span>
+<span class="co">## [55] fastmap_1.1.0          utf8_1.2.2            </span>
+<span class="co">## [57] rprojroot_2.0.3        ragg_1.2.2            </span>
+<span class="co">## [59] desc_1.4.1             stringi_1.7.6         </span>
+<span class="co">## [61] parallel_4.1.3         vctrs_0.4.1           </span>
+<span class="co">## [63] png_0.1-7              xfun_0.31</span></code></pre>
 </div>
 </div>
 <div class="section level2">
